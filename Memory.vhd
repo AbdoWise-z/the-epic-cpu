@@ -23,7 +23,7 @@ process
 begin
 --todo: how to read and write
 	if(rising_edge(WriteEnable)) then
-		
+		error <=1;
 	end if;
 
 end process;
