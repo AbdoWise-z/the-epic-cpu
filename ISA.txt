@@ -1,0 +1,489 @@
+Control Signal description:
+    RS     => {
+        0 -> Rdst
+        1 -> Rsrc
+    }
+
+    Op1S   => {
+        00 -> Reg 1
+        01 -> PC
+        10 -> Input
+        11 -> EA
+    }
+
+    Op2S   => {
+        00 -> Reg 2
+        01 -> Immd (16 bit)
+        10 -> Reg 1
+        11 -> Immd (6 bit)
+    }
+
+    JT     => {
+        00 -> no jump
+        01 -> non-conditional
+        10 -> conditional-zero
+    }
+    
+    OE     => {
+        0 -> disable
+        1 -> enable
+    }
+
+    ALU-OP => {
+        0000 -> NOP
+        0001 -> NOT
+        0010 -> NEG
+        0011 -> INC
+        0100 -> DEC
+        0101 -> ADD
+        0110 -> SUB
+        0111 -> AND
+        1000 -> OR
+        1001 -> XOR
+        1010 -> CMP
+        1011 -> BITSET
+        1100 -> RCL
+        1101 -> RCR
+    }
+
+    WB     => {
+        0 -> disable
+        1 -> enable
+    }
+
+    Rdst   => {
+        000 -> R1
+        001 -> R2
+        010 -> R3
+        011 -> R4
+        100 -> R5
+        101 -> R6
+        110 -> R7
+        111 -> R8
+    }
+
+    SPO    => {
+        0x -> not stack operation
+        10 -> stack pop
+        11 -> stack push
+    }
+
+    PCU    => {
+        0 -> dont write into pc
+        1 -> write into pc
+    }
+
+    PFR     => {
+        0 -> dont pop flag register
+        1 -> pop flag register 
+    }
+
+    MR     => {
+        0 -> disable
+        1 -> enable
+    }
+    
+    MW     => {
+        0 -> disable
+        1 -> enable
+    }
+
+    AS     => {
+        not used
+    }
+
+    VS     => {
+        00 -> select ALU output
+        01 -> select Op-1
+        10 -> select Op-2
+        11 -> select FR
+    }
+
+    F      => {
+        0 -> disable
+        1 -> enable
+    }
+
+    P      => {
+        0 -> disable
+        1 -> enable
+    }
+
+
+Instructions:
+    NOP {
+        00000
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = 000
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    NOT/NEG/INC/DEC {
+        00001/00010/00011/00100
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0001/0010/0011/0100
+        WB     = 1
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    OUT {
+        00101
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 1
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 01
+        F      = 0
+        P      = 0
+    }
+
+    IN {
+        00110
+        RS     = 0
+        Op1S   = 10
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 1
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 01
+        F      = 0
+        P      = 0
+    }
+
+    SWAP {
+        XOR
+        XOR
+        XOR
+    }
+
+    ADD/SUB/AND/OR/XOR/CMP {
+        00111/01000/01001/01010/01011/011000
+        RS     = 1
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0101/0110/0111/1000/1001/1010
+        WB     = 1
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    ADDI = ADD {
+        Op2S = 01
+    }
+
+    BITSET/RCL/RCR {
+        01101/01110/01111
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 11
+        JT     = 00
+        OE     = 0
+        ALU-OP = 1011/1100/1101
+        WB     = 1
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    PUSH {
+        10000
+        RS     = 0
+        Op1S   = depends on wRdst (Rdst / PC)
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = depends on wRdst
+        Rdst   = R(in)
+        SPO    = 11
+        PCU    = depends on wRdst
+        PFR    = depends on wRdst
+        MR     = 0
+        MW     = 1
+        AS     = 0
+        VS     = depends on wRdst (01 or 11)
+        F      = 0
+        P      = 0
+    }
+
+    POP {
+        10001
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = depends on wRdst
+        Rdst   = R(in)
+        SPO    = 10
+        PCU    = depends on wRdst
+        PFR    = depends on wRdst
+        MR     = 1
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    LDM {
+        10001
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 01
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 1
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 10
+        F      = 0
+        P      = 0
+    }
+
+    LDD {
+        10010
+        RS     = 0
+        Op1S   = 11
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 1
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 1
+        MW     = 0
+        AS     = 0
+        VS     = 10
+        F      = 0
+        P      = 0
+    }
+
+    STD {
+        10011
+        RS     = 0
+        Op1S   = 11
+        Op2S   = 10
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 1
+        AS     = 0
+        VS     = 01
+        F      = 0
+        P      = 0
+    }
+
+    PROTECT {
+        10100
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 1
+    }
+
+    FREE {
+        10101
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 1
+        P      = 0
+    }
+
+    JZ {
+        10110
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 10
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    JZ {
+        10111
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 01
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 00
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    CALL { /* found a way to do it as hardware */
+        11000
+        RS     = 0
+        Op1S   = 01
+        Op2S   = 00
+        JT     = 10
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 11
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 1
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    RET {
+        11001
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 10
+        PCU    = 1
+        PFR    = 0
+        MR     = 1
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    INT {
+        11010
+        we still need to talk about this ..
+    }
+
+    RTI {
+        11011
+        we still need to talk about this ..
+    }
