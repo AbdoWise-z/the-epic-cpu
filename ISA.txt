@@ -31,19 +31,19 @@ Control Signal description:
 
     ALU-OP => {
         0000 -> NOP
-        0001 -> NEG
-        0010 -> INC
-        0011 -> DEC
-        0100 -> ADD
-        0101 -> SUB
-        0110 -> AND
-        0111 -> OR
-        1000 -> XOR
-        1001 -> CMP
-        1010 -> BITSET
-        1011 -> RCL
-        1100 -> RCR
-        1101 -> NOT
+        0001 -> NOT
+        0010 -> NEG
+        0011 -> INC
+        0100 -> DEC
+        0101 -> ADD
+        0110 -> SUB
+        0111 -> AND
+        1000 -> OR
+        1001 -> XOR
+        1010 -> CMP
+        1011 -> BITSET
+        1100 -> RCL
+        1101 -> RCR
     }
 
     WB     => {
@@ -139,7 +139,7 @@ Instructions:
         Op2S   = 00
         JT     = 00
         OE     = 0
-        ALU-OP = 1101/0001/0010/0011
+        ALU-OP = 0001/0010/0011/0100
         WB     = 1
         Rdst   = R(in)
         SPO    = 00
@@ -208,7 +208,7 @@ Instructions:
         Op2S   = 00
         JT     = 00
         OE     = 0
-        ALU-OP = 0100/0101/0110/0111/1000/1001
+        ALU-OP = 0101/0110/0111/1000/1001/1010
         WB     = 1
         Rdst   = R(in)
         SPO    = 00
@@ -233,7 +233,7 @@ Instructions:
         Op2S   = 11
         JT     = 00
         OE     = 0
-        ALU-OP = 1010/1011/1100
+        ALU-OP = 1011/1100/1101
         WB     = 1
         Rdst   = R(in)
         SPO    = 00
