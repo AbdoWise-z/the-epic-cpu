@@ -7,6 +7,7 @@ end Entity ALU;
 
 
 Architecture ALUarch of ALU is
+    
 begin
 
 end Architecture ALUarch;
