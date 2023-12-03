@@ -18,7 +18,8 @@ end Entity Memory;
 Architecture Memoryarch of Memory is
 Type ram_type is Array(0 to 4095) of std_logic_vector(15 downto 0);
 -- Array type of 4096 word addressable == 8192 byte addressable
-	Signal ram: ram_type := (others =>(others =>('0')));
+	Signal defaultram,ram: ram_type := (others =>(others =>('0')));
+
 	Signal Protect_Bit: std_logic_vector(4095 downto 0) := (others =>('0')); 
 begin
 
@@ -34,10 +35,11 @@ begin
 		while not EndFile (data_file) LOOP
 			readline(data_file, line_content);
 			read(line_content,data_line);
-			ram(SimAddress) <= data_line;
+			defaultram(SimAddress) <= data_line;
 			SimAddress := SimAddress+1;
-			
 		End Loop;
+		file_close(data_file);
+		Protect_Bit <= (others =>('0'));
 	elsif((MemEnable) ='1') then
 		if((to_integer(unsigned(Address(11 downto 0))) mod 2) = 0) then
 			if((WriteEnable) = '1') then
