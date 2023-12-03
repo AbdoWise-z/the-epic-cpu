@@ -23,20 +23,21 @@ Type ram_type is Array(0 to 4095) of std_logic_vector(15 downto 0);
 begin
 
 process(MemEnable,Reset)
-FILE data_file : TEXT OPEN READ_MODE IS "datamem.txt";
+FILE data_file : TEXT ;
 variable line_content : line := null;
 variable data_line    : std_logic_vector(15 downto 0);
 variable SimAddress   : integer := 0;
 begin
 --todo: how to read and write
+	file_open(data_file, "datamem.txt", read_mode);
 	if(Rising_edge(Reset)) then
 		while not EndFile (data_file) LOOP
 			readline(data_file, line_content);
 			read(line_content,data_line);
 			ram(SimAddress) <= data_line;
 			SimAddress := SimAddress+1;
-			
 		End Loop;
+		file_close(data_file);
 	elsif((MemEnable) ='1') then
 		if((to_integer(unsigned(Address(11 downto 0))) mod 2) = 0) then
 			if((WriteEnable) = '1') then

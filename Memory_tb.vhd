@@ -41,6 +41,12 @@ begin
 	Addr(1) <= '1';
 	wait for 2 ns;
 	Me <='1';
+	wait for 1 ns;
+	Me <= '0';
+	Addr(1 downto 0) <="00";
+	wait for 1 ns;
+	R <= '1';
+
 	
 	
 wait;

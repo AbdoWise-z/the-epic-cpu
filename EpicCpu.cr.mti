@@ -1,10 +1,10 @@
-C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd
+C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity WriteBack
--- Compiling architecture WriteBackArch of WriteBack
+-- Compiling entity Control_Unit
+-- Compiling architecture Control_Unitarch of Control_Unit
 
 } {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -14,13 +14,13 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity Decode
 -- Compiling architecture DecodeArch of Decode
 
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity Control_Unit
--- Compiling architecture Control_Unitarch of Control_Unit
+-- Compiling entity WriteBack
+-- Compiling architecture WriteBackArch of WriteBack
 
 } {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Memory.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\Memory.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -31,15 +31,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package std_logic_textio
 -- Compiling entity Memory
 -- Compiling architecture Memoryarch of Memory
-
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/InstructionMem.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/InstructionMem.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity Instruction_Mem
--- Compiling architecture Instruction_Memarch of Instruction_Mem
 
 } {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -58,13 +49,14 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity mem_tb
 -- Compiling architecture mem_tbarch of mem_tb
 
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/ALU.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/ALU.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity Fetch
--- Compiling architecture Fetcharch of Fetch
+-- Loading package NUMERIC_STD
+-- Compiling entity ALU
+-- Compiling architecture ALUarch of ALU
 
 } {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -74,13 +66,12 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity Forwarding_Unit
 -- Compiling architecture Forwarding_Unitarch of Forwarding_Unit
 
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/ALU.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/ALU.vhd
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity ALU
--- Compiling architecture ALUarch of ALU
+-- Compiling entity Fetch
+-- Compiling architecture Fetcharch of Fetch
 
 } {} {}}
