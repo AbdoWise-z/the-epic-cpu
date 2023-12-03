@@ -22,12 +22,26 @@ begin
 	u: Memory port map(We,Me,P,F,R,data,addr,Outv,err);
 process
 begin
+	data <= (others =>('1'));
 	R <= '1';
 	wait for 5 ns;
 	R <='0';
-	Me <='1';
+	We <='1';
 	wait for 2 ns;
+	Me <='1';
+	wait for 5 ns;	
 	Me <='0';
+	data <= ("10101010101010101010101010101010");
+	Addr(0) <= '1';
+	wait for 1 ns;
+	Me <= '1';
+	wait for 2 ns;
+	Me <= '0';
+	Addr(0) <= '0';
+	Addr(1) <= '1';
+	wait for 2 ns;
+	Me <='1';
+	
 	
 wait;
 end process;

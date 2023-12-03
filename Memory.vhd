@@ -21,12 +21,14 @@ Type ram_type is Array(0 to 4095) of std_logic_vector(15 downto 0);
 	Signal ram: ram_type := (others =>(others =>('0')));
 	Signal Protect_Bit: std_logic_vector(4095 downto 0) := (others =>('0')); 
 begin
-process(Reset)
+
+process(MemEnable,Reset)
 FILE data_file : TEXT OPEN READ_MODE IS "datamem.txt";
 variable line_content : line := null;
 variable data_line    : std_logic_vector(15 downto 0);
 variable SimAddress   : integer := 0;
 begin
+--todo: how to read and write
 	if(Rising_edge(Reset)) then
 		while not EndFile (data_file) LOOP
 			readline(data_file, line_content);
@@ -35,35 +37,25 @@ begin
 			SimAddress := SimAddress+1;
 			
 		End Loop;
-		
-	end if;
-	
-end process;
-process(MemEnable)
-begin
---todo: how to read and write
-	if(rising_edge(MemEnable)) then
+	elsif((MemEnable) ='1') then
 		if((to_integer(unsigned(Address(11 downto 0))) mod 2) = 0) then
-			if(rising_edge(WriteEnable)) then
+			if((WriteEnable) = '1') then
 				if(Protect_Bit(to_integer(unsigned(Address(11 downto 0)))) = '1') then
 					error<='1';
 				else
-					ram(to_integer(unsigned(Address(11 downto 0)))) <= datain(31 downto 16);
-					ram(to_integer(unsigned(Address(11 downto 0))+1)) <=datain(15 downto 0);
+					ram(to_integer(unsigned(Address(11 downto 0))))   <= datain(31 downto 16);
+					ram(to_integer(unsigned(Address(11 downto 0))+1)) <= datain(15 downto 0);
 				end if;
-			elsif(rising_edge(Protect)) then
+			elsif(Protect = '1') then
 				Protect_Bit(to_integer(unsigned(Address(11 downto 0))))<= '1';
-			elsif(rising_edge(Free)) then
+			elsif(Free = '1') then
 				Protect_Bit(to_integer(unsigned(Address(11 downto 0))))<= '0';
 			end if;
-
-			OutValue <= ram(to_integer(unsigned(Address(11 downto 0))))&ram(to_integer(unsigned(Address(11 downto 0)))+1) ;
 		else 
 			error <='1';
 		end if;
 	end if;
-	
 
 end process;
-
+	OutValue <= ram(to_integer(unsigned(Address(11 downto 0))))&ram(to_integer(unsigned(Address(11 downto 0)))+1) ;
 end Architecture Memoryarch;
