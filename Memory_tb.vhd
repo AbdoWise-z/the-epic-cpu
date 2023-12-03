@@ -23,6 +23,7 @@ begin
 process
 begin
 	data <= (others =>('1'));
+	wait for 1 ns;
 	R <= '1';
 	wait for 5 ns;
 	R <='0';
