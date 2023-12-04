@@ -16,7 +16,7 @@ end Entity Memory;
 
 
 Architecture Memoryarch of Memory is
-Type ram_type is Array(0 to 4095) of std_logic_vector(15 downto 0);
+	Type ram_type is Array(0 to 4095) of std_logic_vector(15 downto 0);
 -- Array type of 4096 word addressable == 8192 byte addressable
 	Signal defaultram,ram: ram_type := (others =>(others =>('0')));
 

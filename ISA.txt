@@ -223,6 +223,7 @@ Instructions:
     }
 
     ADDI = ADD {
+        11001
         Op2S = 01
     }
 
@@ -457,33 +458,12 @@ Instructions:
         P      = 0
     }
 
-    RET {
-        11001
-        RS     = 0
-        Op1S   = 00
-        Op2S   = 00
-        JT     = 00
-        OE     = 0
-        ALU-OP = 0000
-        WB     = 0
-        Rdst   = R(in)
-        SPO    = 10
-        PCU    = 1
-        PFR    = 0
-        MR     = 1
-        MW     = 0
-        AS     = 0
-        VS     = 00
-        F      = 0
-        P      = 0
+    RET = POP PC; {
     }
 
     INT {
-        11010
-        we still need to talk about this ..
     }
 
-    RTI {
-        11011
-        we still need to talk about this ..
+    RTI = POP FR;POP PC;{
+
     }
