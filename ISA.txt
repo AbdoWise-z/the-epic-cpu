@@ -416,7 +416,7 @@ Instructions:
         P      = 0
     }
 
-    JZ {
+    JMP {
         10111
         RS     = 0
         Op1S   = 00
