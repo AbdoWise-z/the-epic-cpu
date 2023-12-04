@@ -2,8 +2,8 @@ Library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
---write on rising edge
---decodes on falling edge
+-- write on falling edge
+-- decodes on rising edge
 entity RegisterFile is
   port (
     clk              : in std_logic;
@@ -23,16 +23,16 @@ begin
     Rout1 <= out1;
     Rout2 <= out2;
 
-    process (WB , clk)
+    process (clk)
     begin
-        if (clk = '1' and WB = '1') then
+        if (clk = '0' and clk'event and WB = '1') then
             rgFile(to_integer(unsigned(Rdst))) <= Value;
         end if;
     end process;
 
     process (clk)
     begin
-        if (clk = '0') then
+        if (clk = '1' and clk'event) then
             out1 <= rgFile(to_integer(unsigned(Rsrc1)));
             out2 <= rgFile(to_integer(unsigned(Rsrc2)));
         end if;
