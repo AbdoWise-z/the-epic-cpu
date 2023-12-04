@@ -251,20 +251,20 @@ Instructions:
     PUSH {
         10000
         RS     = 0
-        Op1S   = depends on wRdst (Rdst / PC)
+        Op1S   = 00
         Op2S   = 00
         JT     = 00
         OE     = 0
         ALU-OP = 0000
-        WB     = depends on wRdst
+        WB     = 0
         Rdst   = R(in)
         SPO    = 11
-        PCU    = depends on wRdst
-        PFR    = depends on wRdst
+        PCU    = 0
+        PFR    = 0
         MR     = 0
         MW     = 1
         AS     = 0
-        VS     = depends on wRdst (01 or 11)
+        VS     = 01
         F      = 0
         P      = 0
     }
@@ -277,11 +277,11 @@ Instructions:
         JT     = 00
         OE     = 0
         ALU-OP = 0000
-        WB     = depends on wRdst
+        WB     = 1
         Rdst   = R(in)
         SPO    = 10
-        PCU    = depends on wRdst
-        PFR    = depends on wRdst
+        PCU    = 0
+        PFR    = 0
         MR     = 1
         MW     = 0
         AS     = 0
@@ -458,10 +458,91 @@ Instructions:
         P      = 0
     }
 
-    RET = POP PC; {
+    PUSH-PC {
+        11010
+        RS     = 0
+        Op1S   = 01
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 11
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 1
+        AS     = 0
+        VS     = 01
+        F      = 0
+        P      = 0
     }
 
-    INT {
+    PUSH-FR {
+        11011
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 11
+        PCU    = 0
+        PFR    = 0
+        MR     = 0
+        MW     = 1
+        AS     = 0
+        VS     = 11
+        F      = 0
+        P      = 0
+    }
+
+    POP-PC {
+        11100
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 10
+        PCU    = 1
+        PFR    = 0
+        MR     = 1
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    POP-FR {
+        11101
+        RS     = 0
+        Op1S   = 00
+        Op2S   = 00
+        JT     = 00
+        OE     = 0
+        ALU-OP = 0000
+        WB     = 0
+        Rdst   = R(in)
+        SPO    = 10
+        PCU    = 0
+        PFR    = 1
+        MR     = 1
+        MW     = 0
+        AS     = 0
+        VS     = 00
+        F      = 0
+        P      = 0
+    }
+
+    RET = POP PC; {
     }
 
     RTI = POP FR;POP PC;{
