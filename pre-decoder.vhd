@@ -17,10 +17,10 @@ architecture PreDecoderArch of PreDecoder is
     signal half : std_logic_vector(15 downto 0);
     signal multi : std_logic;
 
-    signal MULTI_1 : std_logic_vector(4 downto 0) := "11001"; -- ADDI
-    signal MULTI_2 : std_logic_vector(4 downto 0) := "10001"; -- LDM
-    signal MULTI_3 : std_logic_vector(4 downto 0) := "10010"; -- LDD
-    signal MULTI_4 : std_logic_vector(4 downto 0) := "10011"; -- STD
+    signal MULTI_1 : std_logic_vector(4 downto 0) := "01101"; -- ADDI
+    signal MULTI_2 : std_logic_vector(4 downto 0) := "10011"; -- LDM
+    signal MULTI_3 : std_logic_vector(4 downto 0) := "10100"; -- LDD
+    signal MULTI_4 : std_logic_vector(4 downto 0) := "10101"; -- STD
     
 begin
 
