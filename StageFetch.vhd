@@ -63,11 +63,12 @@ begin
       else ExecuteValue when PCSelector = "01"
       else DecodeValue when PCSelector = "10"
       else MemoryValue when PCSelector = "11";
-
+	
+	
     PCCU : PCControlUnit  port map(PCU , ZeroFlag , ExecuteWB , MemWB , Rdst , ERdst , MRdst , JmpType , PCSelector , PCCFlush , Flush_Decode , Flush_Execute);
     PD   : PreDecoder     port map(clk , PCCFlush , InstIn , InstOut);
     MEM  : InstructionMem port map(PC => Addr , Reset => reset , Error => Error , Instruction => InstIn);
-
+	
     process(clk)
     begin
         if (clk'event and clk = '1') then

@@ -1,26 +1,38 @@
-C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd
+C:/Users/abdo_/Desktop/the-epic-cpu/ForwardCalculationUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/ForwardCalculationUnit.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity WriteBack
--- Compiling architecture WriteBackArch of WriteBack
+-- Loading package NUMERIC_STD
+-- Compiling entity ForwardCalculationUnit
+-- Compiling architecture ForwardCalculationUnitArch of ForwardCalculationUnit
 
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/PCControlUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/PCControlUnit.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity Decode
--- Compiling architecture DecodeArch of Decode
+-- Loading package NUMERIC_STD
+-- Compiling entity PCControlUnit
+-- Compiling architecture PCCU_ARCH of PCControlUnit
 
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/StageFetch.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\StageFetch.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity Control_Unit
--- Compiling architecture Control_Unitarch of Control_Unit
+-- Loading package NUMERIC_STD
+-- Compiling entity StageFetch
+-- Compiling architecture StageFetchArch of StageFetch
+
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/ControlUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/ControlUnit.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ControlUnit
+-- Compiling architecture ControlUnitArch of ControlUnit
 
 } {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/InstructionMem.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\InstructionMem.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -32,7 +44,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity InstructionMem
 -- Compiling architecture InstructionMemarch of InstructionMem
 
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Memory.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\Memory.vhd}
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Memory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Memory.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -41,31 +53,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package std_logic_textio
 -- Compiling entity Memory
 -- Compiling architecture Memoryarch of Memory
-
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity File_Register
--- Compiling architecture File_Registerarch of File_Register
-
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity Fetch
--- Compiling architecture Fetcharch of Fetch
-
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity Forwarding_Unit
--- Compiling architecture Forwarding_Unitarch of Forwarding_Unit
 
 } {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/ALU.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/ALU.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
@@ -76,12 +63,43 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity ALU
 -- Compiling architecture ALUarch of ALU
 
-} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Memory_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/Memory_tb.vhd
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/PreDecoder.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\PreDecoder.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PreDecoder
+-- Compiling architecture PreDecoderArch of PreDecoder
+
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/RegisterFile.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/abdo_/Desktop/the-epic-cpu/RegisterFile.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity RegisterFile
+-- Compiling architecture RegisterFileArch of RegisterFile
+
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Memory_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\Memory_tb.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity mem_tb
 -- Compiling architecture mem_tbarch of mem_tb
+
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/Fetch_Tb.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\Fetch_Tb.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Fetch_tb
+-- Compiling architecture Fetch_tbarch of Fetch_tb
+
+} {} {}} C:/Users/abdo_/Desktop/the-epic-cpu/StageDecode.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\abdo_\Desktop\the-epic-cpu\StageDecode.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Compiling entity StageDecode
 
 } {} {}}
