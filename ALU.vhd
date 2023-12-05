@@ -178,6 +178,5 @@ begin
         else sRCLf when S = "1100"
         else sRCRf when S = "1101"
         else sNOPf; 
-
-
+        
 end Architecture ALUarch;

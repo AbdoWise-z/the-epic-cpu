@@ -1,0 +1,15 @@
+Tue Dec 05 12:03:26 +0200 2023
+Trace back: can't read "_visible(-1)": no such element in array
+    while executing
+"if {$_visible($prevC) eq "show"} {
+						break
+					}"
+    (object "::.main_pane.structure.interior.cs.body.struct" method "::vsimwidgets::Hierarchy::_hdrMotion" body line 12)
+    invoked from within
+"::.main_pane.structure.interior.cs.body.struct _hdrMotion .main_pane.structure.interior.cs.body.struct.lwchildsite.clipper.canvas.sfchildsite.header62..."
+    (in namespace inscope "::vsimwidgets::Hierarchy" script line 1)
+    invoked from within
+"namespace inscope ::vsimwidgets::Hierarchy {::.main_pane.structure.interior.cs.body.struct _hdrMotion .main_pane.structure.interior.cs.body.struct.lwc..."
+    (command bound to event)
+  <2:C:/intelFPGA/18.1/modelsim_ase/win32aloem/tk8.5/bgerror.tcl:92: ::tkerror {can't read "_visible(-1)": no such element in array}
+  <1:eval:1: ::tk::dialog::error::bgerror {can't read "_visible(-1)": no such element in array}
