@@ -28,12 +28,10 @@ entity StageMemory is
     -- Outputs
     oValue    : out std_logic_vector(31 downto 0);
     oMemValue : out std_logic_vector(31 downto 0)
-
-
   ) ;
 end StageMemory;
 
-architecture StageMemory_Arch of StageMemory is
+architecture StageMemoryArch of StageMemory is
     component Memory is 
         port( 
 	        WriteEnable , MemEnable , Protect , Free , Reset: in std_logic;

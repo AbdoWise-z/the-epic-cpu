@@ -1,0 +1,13 @@
+add wave -position end  sim:/cpu/stagedecode_inst/ControlSignals
+add wave -position end  sim:/cpu/stagedecode_inst/inst
+add wave -position end  sim:/cpu/stagedecode_inst/oRegControl
+add wave -position end  sim:/cpu/stagedecode_inst/oALUControl
+add wave -position end  sim:/cpu/stageexecute_inst/ALU_OP
+add wave -position end  sim:/cpu/stageexecute_inst/Op_1
+add wave -position end  sim:/cpu/stageexecute_inst/Op_2
+add wave -position end  sim:/cpu/stageexecute_inst/oRegisterControl
+add wave -position end  sim:/cpu/stagememory_inst/Value
+add wave -position end  sim:/cpu/stagememory_inst/oValue
+add wave -position end  sim:/cpu/stagememory_inst/oWB
+add wave -position end  sim:/cpu/stagememory_inst/oRdst
+force -freeze sim:/cpu/RESET 0 0

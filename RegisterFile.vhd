@@ -30,13 +30,8 @@ begin
         end if;
     end process;
 
-    process (clk)
-    begin
-        if (clk = '1' and clk'event) then
-            out1 <= rgFile(to_integer(unsigned(Rsrc1)));
-            out2 <= rgFile(to_integer(unsigned(Rsrc2)));
-        end if;
-    end process;
+    out1 <= rgFile(to_integer(unsigned(Rsrc1)));
+    out2 <= rgFile(to_integer(unsigned(Rsrc2)));
 
 end RegisterFileArch ; -- RegisterFileArch
 

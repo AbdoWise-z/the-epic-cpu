@@ -97,7 +97,6 @@ begin
 
     OUTPUT <= sOUTPUT;
 
-
     process(clk)
     begin
         if (rising_edge(clk)) then
