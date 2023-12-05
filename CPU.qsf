@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CGXFC7C7F23C8
-set_global_assignment -name TOP_LEVEL_ENTITY RegisterFile
+set_global_assignment -name TOP_LEVEL_ENTITY CPU
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 21.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:12:21  DECEMBER 02, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION "21.1.1 Lite Edition"
@@ -56,6 +56,13 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VHDL_FILE StageMemory.vhd
+set_global_assignment -name VHDL_FILE StageFetch.vhd
+set_global_assignment -name VHDL_FILE StageExecute_tb.vhd
+set_global_assignment -name VHDL_FILE StageExecute.vhd
+set_global_assignment -name VHDL_FILE StageDecode_tb.vhd
+set_global_assignment -name VHDL_FILE StageDecode.vhd
+set_global_assignment -name VHDL_FILE CPU.vhd
 set_global_assignment -name VHDL_FILE RegisterFile.vhd
 set_global_assignment -name VHDL_FILE PreDecoder.vhd
 set_global_assignment -name VHDL_FILE PCControlUnit.vhd

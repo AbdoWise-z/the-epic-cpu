@@ -41,6 +41,7 @@ architecture StageExecuteArch of StageExecute is
     signal FORWARD_out1, FORWARD_out2 : std_logic_vector(1 downto 0);
 
     constant ZERO     : std_logic_vector(27 downto 0) := (others => '0');
+    constant BIG_ZERO : std_logic_vector(31 downto 0) := (others => '0');
     
     signal fOE : std_logic;
     signal fALU_OP     : std_logic_vector(3 downto 0) := (others => '0');
@@ -76,19 +77,20 @@ begin
     ALU_A <= Op_1                   when FORWARD_out1 = "00" 
         else execute_forward_Value  when FORWARD_out1 = "01"
         else memory_forward_Value   when FORWARD_out1 = "10"
-        else (others => '0')        when FORWARD_out1 = "11";  --should never happen
+        else (others => '0');  --should never happen
 
     ALU_B <= Op_2                   when FORWARD_out2 = "00" 
         else execute_forward_Value  when FORWARD_out2 = "01"
         else memory_forward_Value   when FORWARD_out2 = "10"
-        else (others => '0')        when FORWARD_out2 = "11";  --should never happen
+        else (others => '0');  --should never happen
 
-     alu_cmp : ALU port map(ALU_A,ALU_B,ALU_FRin,fALU_OP,ALU_F,ALU_FRout);
+    alu_cmp : ALU port map(ALU_A,ALU_B,ALU_FRin,fALU_OP,ALU_F,ALU_FRout);
 
     sValue <= ALU_F                 when fVS = "00"
         else ALU_A                  when fVS = "01"
         else ALU_B                  when fVS = "10"
-        else ZERO & ALU_FRout       when fVS = "11";
+        else ZERO & ALU_FRout       when fVS = "11"
+        else BIG_ZERO;
 
     sALU_FRin <= FR_forward_Value(3 downto 0) when execute_forward_PFR = '1'
         else ALU_FRout;

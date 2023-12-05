@@ -1,22 +1,4 @@
-C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity StageFetch
--- Compiling architecture StageFetchArch of StageFetch
-
-} {} {}} C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity StageExecute
--- Compiling architecture StageExecuteArch of StageExecute
-
-} {} {}} C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd
+C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -61,15 +43,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package NUMERIC_STD
 -- Compiling entity RegisterFile
 -- Compiling architecture RegisterFileArch of RegisterFile
-
-} {} {}} C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity StageMemory
--- Compiling architecture StageMemoryArch of StageMemory
 
 } {} {}} C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Mon Dec  4 17:46:18 2023
+Tue Dec  5 18:28:24 2023
 Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 
 
@@ -13,14 +13,14 @@ Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis RAM Summary
-  9. General Register Statistics
- 10. Registers Packed Into Inferred Megafunctions
- 11. Source assignments for altsyncram:rgFile_rtl_0|altsyncram_cpn1:auto_generated
- 12. Source assignments for altsyncram:rgFile_rtl_1|altsyncram_cpn1:auto_generated
- 13. Parameter Settings for Inferred Entity Instance: altsyncram:rgFile_rtl_0
- 14. Parameter Settings for Inferred Entity Instance: altsyncram:rgFile_rtl_1
- 15. altsyncram Parameter Settings by Entity Instance
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Port Connectivity Checks: "StageMemory:stagememory_inst"
+ 12. Port Connectivity Checks: "StageExecute:stageexecute_inst"
+ 13. Port Connectivity Checks: "StageDecode:stagedecode_inst"
+ 14. Port Connectivity Checks: "StageFetch:stagefetch_inst|PreDecoder:PD"
+ 15. Port Connectivity Checks: "StageFetch:stagefetch_inst"
  16. Post-Synthesis Netlist Statistics for Top Partition
  17. Elapsed Time Per Partition
  18. Analysis & Synthesis Messages
@@ -50,16 +50,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Dec  4 17:46:18 2023       ;
+; Analysis & Synthesis Status     ; Successful - Tue Dec  5 18:28:24 2023       ;
 ; Quartus Prime Version           ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
-; Top-level Entity Name           ; RegisterFile                                ;
+; Top-level Entity Name           ; CPU                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
 ; Total registers                 ; 0                                           ;
-; Total pins                      ; 107                                         ;
+; Total pins                      ; 102                                         ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 512                                         ;
+; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
-; Top-level entity name                                                           ; RegisterFile       ; CPU                ;
+; Top-level entity name                                                           ; CPU                ; CPU                ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -173,24 +173,23 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                            ;
-+-------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path          ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                      ; Library ;
-+-------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; RegisterFile.vhd                          ; yes             ; User VHDL File                                        ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd                          ;         ;
-; altsyncram.tdf                            ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf                             ;         ;
-; stratix_ram_block.inc                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratix_ram_block.inc                      ;         ;
-; lpm_mux.inc                               ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_mux.inc                                ;         ;
-; lpm_decode.inc                            ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_decode.inc                             ;         ;
-; aglobal211.inc                            ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/aglobal211.inc                             ;         ;
-; a_rdenreg.inc                             ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/a_rdenreg.inc                              ;         ;
-; altrom.inc                                ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altrom.inc                                 ;         ;
-; altram.inc                                ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altram.inc                                 ;         ;
-; altdpram.inc                              ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altdpram.inc                               ;         ;
-; db/altsyncram_cpn1.tdf                    ; yes             ; Auto-Generated Megafunction                           ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/db/altsyncram_cpn1.tdf                    ;         ;
-; db/CPU.ram0_RegisterFile_878b6b30.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/db/CPU.ram0_RegisterFile_878b6b30.hdl.mif ;         ;
-+-------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                              ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                       ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------+---------+
+; StageMemory.vhd                  ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd            ;         ;
+; StageFetch.vhd                   ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd             ;         ;
+; StageExecute.vhd                 ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd           ;         ;
+; StageDecode.vhd                  ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd            ;         ;
+; CPU.vhd                          ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd                    ;         ;
+; RegisterFile.vhd                 ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd           ;         ;
+; PreDecoder.vhd                   ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd             ;         ;
+; PCControlUnit.vhd                ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PCControlUnit.vhd          ;         ;
+; ForwardCalculationUnit.vhd       ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardCalculationUnit.vhd ;         ;
+; ControlUnit.vhd                  ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ControlUnit.vhd            ;         ;
+; ALU.vhd                          ; yes             ; User VHDL File  ; C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd                    ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------+
@@ -209,41 +208,301 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;          ;
 ; Dedicated logic registers                   ; 0        ;
 ;                                             ;          ;
-; I/O pins                                    ; 107      ;
-; Total MLAB memory bits                      ; 0        ;
-; Total block memory bits                     ; 512      ;
+; I/O pins                                    ; 102      ;
 ;                                             ;          ;
 ; Total DSP Blocks                            ; 0        ;
 ;                                             ;          ;
-; Maximum fan-out node                        ; WB~input ;
-; Maximum fan-out                             ; 64       ;
-; Total fan-out                               ; 747      ;
-; Average fan-out                             ; 2.69     ;
+; Maximum fan-out node                        ; INPUT[0] ;
+; Maximum fan-out                             ; 1        ;
+; Total fan-out                               ; 102      ;
+; Average fan-out                             ; 0.50     ;
 +---------------------------------------------+----------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                     ;
-+----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                  ; Entity Name     ; Library Name ;
-+----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------+-----------------+--------------+
-; |RegisterFile                          ; 0 (0)               ; 0 (0)                     ; 512               ; 0          ; 107  ; 0            ; |RegisterFile                                                        ; RegisterFile    ; work         ;
-;    |altsyncram:rgFile_rtl_0|           ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |RegisterFile|altsyncram:rgFile_rtl_0                                ; altsyncram      ; work         ;
-;       |altsyncram_cpn1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |RegisterFile|altsyncram:rgFile_rtl_0|altsyncram_cpn1:auto_generated ; altsyncram_cpn1 ; work         ;
-;    |altsyncram:rgFile_rtl_1|           ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |RegisterFile|altsyncram:rgFile_rtl_1                                ; altsyncram      ; work         ;
-;       |altsyncram_cpn1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 256               ; 0          ; 0    ; 0            ; |RegisterFile|altsyncram:rgFile_rtl_1|altsyncram_cpn1:auto_generated ; altsyncram_cpn1 ; work         ;
-+----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------+-----------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |CPU                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 102  ; 0            ; |CPU                ; CPU         ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                           ;
-+-------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+-------------------------------------------+
-; Name                                                              ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                       ;
-+-------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+-------------------------------------------+
-; altsyncram:rgFile_rtl_0|altsyncram_cpn1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 8            ; 32           ; 8            ; 32           ; 256  ; db/CPU.ram0_RegisterFile_878b6b30.hdl.mif ;
-; altsyncram:rgFile_rtl_1|altsyncram_cpn1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 8            ; 32           ; 8            ; 32           ; 256  ; db/CPU.ram0_RegisterFile_878b6b30.hdl.mif ;
-+-------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+-------------------------------------------+
++--------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                           ;
++----------------------------------------------------------------+---------------------------------------------+
+; Register name                                                  ; Reason for Removal                          ;
++----------------------------------------------------------------+---------------------------------------------+
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[0..15]           ; Stuck at GND due to stuck port data_in      ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[5..15,24..31] ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|oRegControl[4..6]                 ; Stuck at GND due to stuck port data_in      ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[0..4]         ; Stuck at GND due to stuck port data_in      ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|multi                 ; Stuck at GND due to stuck port data_in      ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[16..23]       ; Stuck at GND due to stuck port data_in      ;
+; StageExecute:stageexecute_inst|oRegisterControl[4..6]          ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|oMemControl[2,3]                  ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|oRegControl[0,1,7]                ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|oALUControl[0..3]                 ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|oPortControl                      ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|oJumpControl[0,1]                 ; Stuck at GND due to stuck port data_in      ;
+; StageFetch:stagefetch_inst|nextPC[0..31]                       ; Lost fanout                                 ;
+; StageMemory:stagememory_inst|oRdst[0..2]                       ; Stuck at GND due to stuck port data_in      ;
+; StageExecute:stageexecute_inst|sOutput[0,1,14..31]             ; Stuck at GND due to stuck port clock_enable ;
+; StageExecute:stageexecute_inst|oRegisterControl[0,1,7]         ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|oOp2[0..31]                       ; Lost fanout                                 ;
+; StageDecode:stagedecode_inst|oOp1[0..31]                       ; Lost fanout                                 ;
+; StageMemory:stagememory_inst|oWB                               ; Stuck at GND due to stuck port data_in      ;
+; StageMemory:stagememory_inst|oPCU                              ; Stuck at GND due to stuck port data_in      ;
+; StageExecute:stageexecute_inst|sOutput[2..13]                  ; Stuck at GND due to stuck port clock_enable ;
+; StageExecute:stageexecute_inst|oValue[4..31]                   ; Stuck at GND due to stuck port data_in      ;
+; StageDecode:stagedecode_inst|DecodeValue[0..31]                ; Lost fanout                                 ;
+; StageMemory:stagememory_inst|oValue[4..31]                     ; Stuck at GND due to stuck port data_in      ;
+; StageMemory:stagememory_inst|oValue[0..3]                      ; Lost fanout                                 ;
+; StageExecute:stageexecute_inst|oValue[0..3]                    ; Lost fanout                                 ;
+; StageExecute:stageexecute_inst|ALU_FRin[0..3]                  ; Lost fanout                                 ;
+; StageFetch:stagefetch_inst|InternalPC[0..31]                   ; Lost fanout                                 ;
+; Total Number of Removed Registers = 335                        ;                                             ;
++----------------------------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                            ;
++------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Register name                                        ; Reason for Removal        ; Registers Removed due to This Register                                              ;
++------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[11]    ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[27],                               ;
+;                                                      ; due to stuck port data_in ; StageDecode:stagedecode_inst|oMemControl[2],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oMemControl[3],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oRegControl[0],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oRegControl[1],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oRegControl[7],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oALUControl[0],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oALUControl[1],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oALUControl[2],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oALUControl[3],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oPortControl,                                          ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oJumpControl[0],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oJumpControl[1],                                       ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[1],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[0],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[14],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[15],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[16],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[17],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[18],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[19],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[20],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[21],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[22],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[23],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[24],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[25],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[26],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[27],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[28],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[29],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[30],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[31],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oRegisterControl[0],                                 ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oRegisterControl[1],                                 ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oRegisterControl[7],                                 ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[30], StageDecode:stagedecode_inst|oOp2[29],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[28], StageDecode:stagedecode_inst|oOp2[27],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[26], StageDecode:stagedecode_inst|oOp2[25],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[24], StageDecode:stagedecode_inst|oOp2[23],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[22], StageDecode:stagedecode_inst|oOp2[21],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[20], StageDecode:stagedecode_inst|oOp2[19],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[18], StageDecode:stagedecode_inst|oOp2[17],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[16], StageDecode:stagedecode_inst|oOp2[15],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[14], StageDecode:stagedecode_inst|oOp2[13],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[12], StageDecode:stagedecode_inst|oOp2[11],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[10], StageDecode:stagedecode_inst|oOp2[9],        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[8], StageDecode:stagedecode_inst|oOp2[7],         ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[6], StageDecode:stagedecode_inst|oOp2[5],         ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[4], StageDecode:stagedecode_inst|oOp2[3],         ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[2], StageDecode:stagedecode_inst|oOp2[1],         ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp2[0], StageDecode:stagedecode_inst|oOp2[31],        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[30], StageDecode:stagedecode_inst|oOp1[29],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[28], StageDecode:stagedecode_inst|oOp1[27],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[26], StageDecode:stagedecode_inst|oOp1[25],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[24], StageDecode:stagedecode_inst|oOp1[23],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[22], StageDecode:stagedecode_inst|oOp1[21],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[20], StageDecode:stagedecode_inst|oOp1[19],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[18], StageDecode:stagedecode_inst|oOp1[17],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[16], StageDecode:stagedecode_inst|oOp1[15],       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[14], StageDecode:stagedecode_inst|oOp1[1],        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|oOp1[0], StageDecode:stagedecode_inst|oOp1[31],        ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oWB, StageMemory:stagememory_inst|oPCU,                ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[13],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[12],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[11],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[10],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[9],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[8],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[7],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[6],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[5],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[4],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[3],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|sOutput[2],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[4], StageExecute:stageexecute_inst|oValue[5], ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[6], StageExecute:stageexecute_inst|oValue[7], ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[8], StageExecute:stageexecute_inst|oValue[9], ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[10],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[11],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[12],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[13],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[14],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[15],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[16],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[17],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[18],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[19],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[20],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[21],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[22],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[23],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[24],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[25],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[26],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[27],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[28],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[29],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[30],                                          ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[31],                                          ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[0],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[1],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[2],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[3],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[4],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[5],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[6],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[7],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[8],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[9],                                        ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[10],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[11],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[12],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[13],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[14],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[15],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[16],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[17],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[18],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[19],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[20],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[21],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[22],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[23],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[24],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[25],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[26],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[27],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[28],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[29],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[30],                                       ;
+;                                                      ;                           ; StageDecode:stagedecode_inst|DecodeValue[31],                                       ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[30], StageMemory:stagememory_inst|oValue[29],   ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[28], StageMemory:stagememory_inst|oValue[27],   ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[26], StageMemory:stagememory_inst|oValue[25],   ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[24], StageMemory:stagememory_inst|oValue[23],   ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[22], StageMemory:stagememory_inst|oValue[21],   ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[20], StageMemory:stagememory_inst|oValue[19],   ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[18], StageMemory:stagememory_inst|oValue[17],   ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[16], StageMemory:stagememory_inst|oValue[15],   ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[0], StageExecute:stageexecute_inst|oValue[1], ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|oValue[2], StageExecute:stageexecute_inst|oValue[3], ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|ALU_FRin[0],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|ALU_FRin[1],                                         ;
+;                                                      ;                           ; StageExecute:stageexecute_inst|ALU_FRin[2],                                         ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[4], StageFetch:stagefetch_inst|InternalPC[3], ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[2], StageFetch:stagefetch_inst|InternalPC[1], ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[0], StageFetch:stagefetch_inst|InternalPC[5], ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[6], StageFetch:stagefetch_inst|InternalPC[7], ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[8], StageFetch:stagefetch_inst|InternalPC[9], ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[10],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[11],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[12],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[13],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[14],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[15],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[16],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[17],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[18],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[19],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[20],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[21],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[22],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[23],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[24],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[25],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[26],                                          ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|InternalPC[27]                                           ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[8]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[24],                               ;
+;                                                      ; due to stuck port data_in ; StageDecode:stagedecode_inst|oRegControl[4], StageFetch:stagefetch_inst|nextPC[0],  ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|nextPC[1], StageFetch:stagefetch_inst|nextPC[2],         ;
+;                                                      ;                           ; StageFetch:stagefetch_inst|nextPC[3]                                                ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[5]  ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[5], StageMemory:stagememory_inst|oValue[3],       ;
+;                                                      ; due to stuck port data_in ; StageMemory:stagememory_inst|oValue[2], StageMemory:stagememory_inst|oValue[1],     ;
+;                                                      ;                           ; StageMemory:stagememory_inst|oValue[0]                                              ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[10]    ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[26],                               ;
+;                                                      ; due to stuck port data_in ; StageDecode:stagedecode_inst|oRegControl[6]                                         ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[9]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[25],                               ;
+;                                                      ; due to stuck port data_in ; StageDecode:stagedecode_inst|oRegControl[5]                                         ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[3]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[19],                               ;
+;                                                      ; due to stuck port data_in ; StageFetch:stagefetch_inst|nextPC[19]                                               ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[2]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[18],                               ;
+;                                                      ; due to stuck port data_in ; StageFetch:stagefetch_inst|nextPC[18]                                               ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[1]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[17],                               ;
+;                                                      ; due to stuck port data_in ; StageFetch:stagefetch_inst|nextPC[17]                                               ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[0]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[16],                               ;
+;                                                      ; due to stuck port data_in ; StageFetch:stagefetch_inst|nextPC[16]                                               ;
+; StageExecute:stageexecute_inst|oRegisterControl[4]   ; Stuck at GND              ; StageMemory:stagememory_inst|oRdst[0], StageExecute:stageexecute_inst|ALU_FRin[3]   ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[15]    ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[31]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[14]    ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[30]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[13]    ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[29]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[12]    ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[28]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[7]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[23]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[6]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[22]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[5]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[21]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|half[4]     ; Stuck at GND              ; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[20]                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[6]  ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[6]                                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[7]  ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[7]                                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[8]  ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[8]                                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[9]  ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[9]                                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[10] ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[10]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[11] ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[11]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[12] ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[12]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[13] ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[13]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[14] ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[14]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[15] ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[15]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageFetch:stagefetch_inst|PreDecoder:PD|InstOut[4]  ; Stuck at GND              ; StageFetch:stagefetch_inst|nextPC[4]                                                ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageExecute:stageexecute_inst|oRegisterControl[5]   ; Stuck at GND              ; StageMemory:stagememory_inst|oRdst[1]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
+; StageExecute:stageexecute_inst|oRegisterControl[6]   ; Stuck at GND              ; StageMemory:stagememory_inst|oRdst[2]                                               ;
+;                                                      ; due to stuck port data_in ;                                                                                     ;
++------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -261,198 +520,66 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------+
-; Registers Packed Into Inferred Megafunctions ;
-+---------------+--------------+---------------+
-; Register Name ; Megafunction ; Type          ;
-+---------------+--------------+---------------+
-; out1[0..31]   ; rgFile_rtl_0 ; RAM           ;
-; out2[0..31]   ; rgFile_rtl_1 ; RAM           ;
-+---------------+--------------+---------------+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "StageMemory:stagememory_inst"                                                            ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; opc       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; error     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; omemvalue ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------+
-; Source assignments for altsyncram:rgFile_rtl_0|altsyncram_cpn1:auto_generated ;
-+---------------------------------+--------------------+------+-----------------+
-; Assignment                      ; Value              ; From ; To              ;
-+---------------------------------+--------------------+------+-----------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -               ;
-+---------------------------------+--------------------+------+-----------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "StageExecute:stageexecute_inst"                                                      ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; error ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------+
-; Source assignments for altsyncram:rgFile_rtl_1|altsyncram_cpn1:auto_generated ;
-+---------------------------------+--------------------+------+-----------------+
-; Assignment                      ; Value              ; From ; To              ;
-+---------------------------------+--------------------+------+-----------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -               ;
-+---------------------------------+--------------------+------+-----------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "StageDecode:stagedecode_inst"                                                        ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; error ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: altsyncram:rgFile_rtl_0                        ;
-+------------------------------------+-------------------------------------------+----------------+
-; Parameter Name                     ; Value                                     ; Type           ;
-+------------------------------------+-------------------------------------------+----------------+
-; BYTE_SIZE_BLOCK                    ; 8                                         ; Untyped        ;
-; AUTO_CARRY_CHAINS                  ; ON                                        ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS               ; OFF                                       ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS                ; ON                                        ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                                       ; IGNORE_CASCADE ;
-; WIDTH_BYTEENA                      ; 1                                         ; Untyped        ;
-; OPERATION_MODE                     ; DUAL_PORT                                 ; Untyped        ;
-; WIDTH_A                            ; 32                                        ; Untyped        ;
-; WIDTHAD_A                          ; 3                                         ; Untyped        ;
-; NUMWORDS_A                         ; 8                                         ; Untyped        ;
-; OUTDATA_REG_A                      ; UNREGISTERED                              ; Untyped        ;
-; ADDRESS_ACLR_A                     ; NONE                                      ; Untyped        ;
-; OUTDATA_ACLR_A                     ; NONE                                      ; Untyped        ;
-; WRCONTROL_ACLR_A                   ; NONE                                      ; Untyped        ;
-; INDATA_ACLR_A                      ; NONE                                      ; Untyped        ;
-; BYTEENA_ACLR_A                     ; NONE                                      ; Untyped        ;
-; WIDTH_B                            ; 32                                        ; Untyped        ;
-; WIDTHAD_B                          ; 3                                         ; Untyped        ;
-; NUMWORDS_B                         ; 8                                         ; Untyped        ;
-; INDATA_REG_B                       ; CLOCK1                                    ; Untyped        ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                    ; Untyped        ;
-; RDCONTROL_REG_B                    ; CLOCK1                                    ; Untyped        ;
-; ADDRESS_REG_B                      ; CLOCK1                                    ; Untyped        ;
-; OUTDATA_REG_B                      ; UNREGISTERED                              ; Untyped        ;
-; BYTEENA_REG_B                      ; CLOCK1                                    ; Untyped        ;
-; INDATA_ACLR_B                      ; NONE                                      ; Untyped        ;
-; WRCONTROL_ACLR_B                   ; NONE                                      ; Untyped        ;
-; ADDRESS_ACLR_B                     ; NONE                                      ; Untyped        ;
-; OUTDATA_ACLR_B                     ; NONE                                      ; Untyped        ;
-; RDCONTROL_ACLR_B                   ; NONE                                      ; Untyped        ;
-; BYTEENA_ACLR_B                     ; NONE                                      ; Untyped        ;
-; WIDTH_BYTEENA_A                    ; 1                                         ; Untyped        ;
-; WIDTH_BYTEENA_B                    ; 1                                         ; Untyped        ;
-; RAM_BLOCK_TYPE                     ; AUTO                                      ; Untyped        ;
-; BYTE_SIZE                          ; 8                                         ; Untyped        ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                      ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                      ; Untyped        ;
-; INIT_FILE                          ; db/CPU.ram0_RegisterFile_878b6b30.hdl.mif ; Untyped        ;
-; INIT_FILE_LAYOUT                   ; PORT_A                                    ; Untyped        ;
-; MAXIMUM_DEPTH                      ; 0                                         ; Untyped        ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                           ; Untyped        ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                           ; Untyped        ;
-; ENABLE_ECC                         ; FALSE                                     ; Untyped        ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                     ; Untyped        ;
-; WIDTH_ECCSTATUS                    ; 3                                         ; Untyped        ;
-; DEVICE_FAMILY                      ; Cyclone V                                 ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_cpn1                           ; Untyped        ;
-+------------------------------------+-------------------------------------------+----------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "StageFetch:stagefetch_inst|PreDecoder:PD" ;
++--------+-------+----------+------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                  ;
++--------+-------+----------+------------------------------------------+
+; instin ; Input ; Info     ; Stuck at GND                             ;
++--------+-------+----------+------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: altsyncram:rgFile_rtl_1                        ;
-+------------------------------------+-------------------------------------------+----------------+
-; Parameter Name                     ; Value                                     ; Type           ;
-+------------------------------------+-------------------------------------------+----------------+
-; BYTE_SIZE_BLOCK                    ; 8                                         ; Untyped        ;
-; AUTO_CARRY_CHAINS                  ; ON                                        ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS               ; OFF                                       ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS                ; ON                                        ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                                       ; IGNORE_CASCADE ;
-; WIDTH_BYTEENA                      ; 1                                         ; Untyped        ;
-; OPERATION_MODE                     ; DUAL_PORT                                 ; Untyped        ;
-; WIDTH_A                            ; 32                                        ; Untyped        ;
-; WIDTHAD_A                          ; 3                                         ; Untyped        ;
-; NUMWORDS_A                         ; 8                                         ; Untyped        ;
-; OUTDATA_REG_A                      ; UNREGISTERED                              ; Untyped        ;
-; ADDRESS_ACLR_A                     ; NONE                                      ; Untyped        ;
-; OUTDATA_ACLR_A                     ; NONE                                      ; Untyped        ;
-; WRCONTROL_ACLR_A                   ; NONE                                      ; Untyped        ;
-; INDATA_ACLR_A                      ; NONE                                      ; Untyped        ;
-; BYTEENA_ACLR_A                     ; NONE                                      ; Untyped        ;
-; WIDTH_B                            ; 32                                        ; Untyped        ;
-; WIDTHAD_B                          ; 3                                         ; Untyped        ;
-; NUMWORDS_B                         ; 8                                         ; Untyped        ;
-; INDATA_REG_B                       ; CLOCK1                                    ; Untyped        ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                    ; Untyped        ;
-; RDCONTROL_REG_B                    ; CLOCK1                                    ; Untyped        ;
-; ADDRESS_REG_B                      ; CLOCK1                                    ; Untyped        ;
-; OUTDATA_REG_B                      ; UNREGISTERED                              ; Untyped        ;
-; BYTEENA_REG_B                      ; CLOCK1                                    ; Untyped        ;
-; INDATA_ACLR_B                      ; NONE                                      ; Untyped        ;
-; WRCONTROL_ACLR_B                   ; NONE                                      ; Untyped        ;
-; ADDRESS_ACLR_B                     ; NONE                                      ; Untyped        ;
-; OUTDATA_ACLR_B                     ; NONE                                      ; Untyped        ;
-; RDCONTROL_ACLR_B                   ; NONE                                      ; Untyped        ;
-; BYTEENA_ACLR_B                     ; NONE                                      ; Untyped        ;
-; WIDTH_BYTEENA_A                    ; 1                                         ; Untyped        ;
-; WIDTH_BYTEENA_B                    ; 1                                         ; Untyped        ;
-; RAM_BLOCK_TYPE                     ; AUTO                                      ; Untyped        ;
-; BYTE_SIZE                          ; 8                                         ; Untyped        ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                      ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                      ; Untyped        ;
-; INIT_FILE                          ; db/CPU.ram0_RegisterFile_878b6b30.hdl.mif ; Untyped        ;
-; INIT_FILE_LAYOUT                   ; PORT_A                                    ; Untyped        ;
-; MAXIMUM_DEPTH                      ; 0                                         ; Untyped        ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                    ; Untyped        ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                           ; Untyped        ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                           ; Untyped        ;
-; ENABLE_ECC                         ; FALSE                                     ; Untyped        ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                     ; Untyped        ;
-; WIDTH_ECCSTATUS                    ; 3                                         ; Untyped        ;
-; DEVICE_FAMILY                      ; Cyclone V                                 ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_cpn1                           ; Untyped        ;
-+------------------------------------+-------------------------------------------+----------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                    ;
-+-------------------------------------------+-------------------------+
-; Name                                      ; Value                   ;
-+-------------------------------------------+-------------------------+
-; Number of entity instances                ; 2                       ;
-; Entity Instance                           ; altsyncram:rgFile_rtl_0 ;
-;     -- OPERATION_MODE                     ; DUAL_PORT               ;
-;     -- WIDTH_A                            ; 32                      ;
-;     -- NUMWORDS_A                         ; 8                       ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED            ;
-;     -- WIDTH_B                            ; 32                      ;
-;     -- NUMWORDS_B                         ; 8                       ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                  ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED            ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                    ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ;
-; Entity Instance                           ; altsyncram:rgFile_rtl_1 ;
-;     -- OPERATION_MODE                     ; DUAL_PORT               ;
-;     -- WIDTH_A                            ; 32                      ;
-;     -- NUMWORDS_A                         ; 8                       ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED            ;
-;     -- WIDTH_B                            ; 32                      ;
-;     -- NUMWORDS_B                         ; 8                       ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                  ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED            ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                    ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ;
-+-------------------------------------------+-------------------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "StageFetch:stagefetch_inst"                                                          ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; error ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
-+--------------------+--------------------------------+
-; Type               ; Count                          ;
-+--------------------+--------------------------------+
-; boundary_port      ; 107                            ;
-; stratixv_ram_block ; 64                             ;
-;                    ;                                ;
-; Max LUT depth      ; 0.00                           ;
-; Average LUT depth  ; 0.00                           ;
-+--------------------+--------------------------------+
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+; boundary_port         ; 102                         ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
 
 
 +-------------------------------+
@@ -470,15 +597,36 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
-    Info: Processing started: Mon Dec  4 17:46:08 2023
+    Info: Processing started: Tue Dec  5 18:28:18 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off the_epic_cpu -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file stagememory.vhd
+    Info (12022): Found design unit 1: StageMemory-StageMemoryArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 34
+    Info (12023): Found entity 1: StageMemory File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file stagefetch.vhd
+    Info (12022): Found design unit 1: StageFetch-StageFetchArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 19
+    Info (12023): Found entity 1: StageFetch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file stageexecute_tb.vhd
+    Info (12022): Found design unit 1: StageExecute_tb-StageExecute_tbArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute_tb.vhd Line: 8
+    Info (12023): Found entity 1: StageExecute_tb File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute_tb.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file stageexecute.vhd
+    Info (12022): Found design unit 1: StageExecute-StageExecuteArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd Line: 25
+    Info (12023): Found entity 1: StageExecute File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file stagedecode_tb.vhd
+    Info (12022): Found design unit 1: StageDecode_tb-StageDecode_tbArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode_tb.vhd Line: 8
+    Info (12023): Found entity 1: StageDecode_tb File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode_tb.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file stagedecode.vhd
+    Info (12022): Found design unit 1: StageDecode-StageDecodeArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 38
+    Info (12023): Found entity 1: StageDecode File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file cpu.vhd
+    Info (12022): Found design unit 1: CPU-CPU_ARCH File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 20
+    Info (12023): Found entity 1: CPU File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file registerfile.vhd
     Info (12022): Found design unit 1: RegisterFile-RegisterFileArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd Line: 18
     Info (12023): Found entity 1: RegisterFile File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file predecoder.vhd
-    Info (12022): Found design unit 1: PreDecoder-PreDecoderArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd Line: 13
+    Info (12022): Found design unit 1: PreDecoder-PreDecoderArch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd Line: 14
     Info (12023): Found entity 1: PreDecoder File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file pccontrolunit.vhd
     Info (12022): Found design unit 1: PCControlUnit-PCCU_ARCH File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PCControlUnit.vhd Line: 18
@@ -487,7 +635,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file memory_
     Info (12022): Found design unit 1: mem_tb-mem_tbarch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory_tb.vhd Line: 8
     Info (12023): Found entity 1: mem_tb File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory_tb.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
-    Info (12022): Found design unit 1: Memory-Memoryarch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory.vhd Line: 18
+    Info (12022): Found design unit 1: Memory-Memoryarch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory.vhd Line: 17
     Info (12023): Found entity 1: Memory File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file instructionmem.vhd
     Info (12022): Found design unit 1: InstructionMem-InstructionMemarch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd Line: 17
@@ -501,72 +649,256 @@ Info (12021): Found 2 design units, including 1 entities, in source file control
 Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
     Info (12022): Found design unit 1: ALU-ALUarch File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd Line: 16
     Info (12023): Found entity 1: ALU File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd Line: 5
-Info (12127): Elaborating entity "RegisterFile" for the top level hierarchy
+Info (12127): Elaborating entity "CPU" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at CPU.vhd(14): used implicit default value for signal "ERROR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 14
+Warning (10541): VHDL Signal Declaration warning at CPU.vhd(15): used implicit default value for signal "ERROR_PC" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(119): object "memoryPc" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 119
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(120): object "dummyError1" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 120
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(120): object "dummyError2" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 120
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(120): object "dummyError3" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 120
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(120): object "dummyError4" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 120
+Warning (10541): VHDL Signal Declaration warning at CPU.vhd(123): used implicit default value for signal "sControllerPCSelect" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 123
+Warning (10541): VHDL Signal Declaration warning at CPU.vhd(126): used implicit default value for signal "sControllerValue" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 126
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(152): object "sDirectValue" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 152
+Info (12128): Elaborating entity "StageFetch" for hierarchy "StageFetch:stagefetch_inst" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 162
+Warning (10541): VHDL Signal Declaration warning at StageFetch.vhd(12): used implicit default value for signal "Error" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 12
+Warning (10540): VHDL Signal Declaration warning at StageFetch.vhd(55): used explicit default value for signal "InstIn" because signal was never assigned a value File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 55
+Info (10041): Inferred latch for "Addr[0]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[1]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[2]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[3]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[4]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[5]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[6]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[7]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[8]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[9]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[10]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[11]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[12]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[13]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[14]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[15]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[16]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[17]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[18]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[19]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[20]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[21]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[22]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[23]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[24]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[25]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[26]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[27]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[28]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[29]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[30]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (10041): Inferred latch for "Addr[31]" at StageFetch.vhd(60) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 60
+Info (12128): Elaborating entity "PCControlUnit" for hierarchy "StageFetch:stagefetch_inst|PCControlUnit:PCCU" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 67
+Info (12128): Elaborating entity "PreDecoder" for hierarchy "StageFetch:stagefetch_inst|PreDecoder:PD" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd Line: 68
+Warning (10540): VHDL Signal Declaration warning at PreDecoder.vhd(21): used explicit default value for signal "MULTI_1" because signal was never assigned a value File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd Line: 21
+Warning (10540): VHDL Signal Declaration warning at PreDecoder.vhd(22): used explicit default value for signal "MULTI_2" because signal was never assigned a value File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd Line: 22
+Warning (10540): VHDL Signal Declaration warning at PreDecoder.vhd(23): used explicit default value for signal "MULTI_3" because signal was never assigned a value File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd Line: 23
+Warning (10540): VHDL Signal Declaration warning at PreDecoder.vhd(24): used explicit default value for signal "MULTI_4" because signal was never assigned a value File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd Line: 24
+Info (12128): Elaborating entity "StageDecode" for hierarchy "StageDecode:stagedecode_inst" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 187
+Warning (10541): VHDL Signal Declaration warning at StageDecode.vhd(13): used implicit default value for signal "ERROR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 13
+Info (10041): Inferred latch for "Op2[0]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[1]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[2]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[3]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[4]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[5]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[6]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[7]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[8]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[9]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[10]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[11]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[12]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[13]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[14]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[15]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[16]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[17]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[18]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[19]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[20]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[21]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[22]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[23]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[24]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[25]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[26]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[27]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[28]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[29]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[30]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op2[31]" at StageDecode.vhd(159) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 159
+Info (10041): Inferred latch for "Op1[0]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[1]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[2]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[3]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[4]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[5]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[6]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[7]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[8]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[9]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[10]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[11]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[12]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[13]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[14]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[15]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[16]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[17]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[18]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[19]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[20]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[21]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[22]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[23]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[24]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[25]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[26]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[27]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[28]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[29]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[30]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (10041): Inferred latch for "Op1[31]" at StageDecode.vhd(154) File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 154
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "StageDecode:stagedecode_inst|ControlUnit:controlunit_inst" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 112
+Info (12128): Elaborating entity "ForwardCalculationUnit" for hierarchy "StageDecode:stagedecode_inst|ForwardCalculationUnit:forwardcalculationunit_inst" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 127
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "StageDecode:stagedecode_inst|RegisterFile:registerfile_inst" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd Line: 142
 Warning (10492): VHDL Process Statement warning at RegisterFile.vhd(28): signal "WB" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd Line: 28
-Warning (276027): Inferred dual-clock RAM node "rgFile_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
-Warning (276027): Inferred dual-clock RAM node "rgFile_rtl_1" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
-Info (19000): Inferred 2 megafunctions from design logic
-    Info (276029): Inferred altsyncram megafunction from the following design logic: "rgFile_rtl_0" 
-        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
-        Info (286033): Parameter WIDTH_A set to 32
-        Info (286033): Parameter WIDTHAD_A set to 3
-        Info (286033): Parameter NUMWORDS_A set to 8
-        Info (286033): Parameter WIDTH_B set to 32
-        Info (286033): Parameter WIDTHAD_B set to 3
-        Info (286033): Parameter NUMWORDS_B set to 8
-        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
-        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
-        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
-        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
-        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
-        Info (286033): Parameter INDATA_ACLR_A set to NONE
-        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-        Info (286033): Parameter INIT_FILE set to db/CPU.ram0_RegisterFile_878b6b30.hdl.mif
-    Info (276029): Inferred altsyncram megafunction from the following design logic: "rgFile_rtl_1" 
-        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
-        Info (286033): Parameter WIDTH_A set to 32
-        Info (286033): Parameter WIDTHAD_A set to 3
-        Info (286033): Parameter NUMWORDS_A set to 8
-        Info (286033): Parameter WIDTH_B set to 32
-        Info (286033): Parameter WIDTHAD_B set to 3
-        Info (286033): Parameter NUMWORDS_B set to 8
-        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
-        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
-        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
-        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
-        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
-        Info (286033): Parameter INDATA_ACLR_A set to NONE
-        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-        Info (286033): Parameter INIT_FILE set to db/CPU.ram0_RegisterFile_878b6b30.hdl.mif
-Info (12130): Elaborated megafunction instantiation "altsyncram:rgFile_rtl_0"
-Info (12133): Instantiated megafunction "altsyncram:rgFile_rtl_0" with the following parameter:
-    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
-    Info (12134): Parameter "WIDTH_A" = "32"
-    Info (12134): Parameter "WIDTHAD_A" = "3"
-    Info (12134): Parameter "NUMWORDS_A" = "8"
-    Info (12134): Parameter "WIDTH_B" = "32"
-    Info (12134): Parameter "WIDTHAD_B" = "3"
-    Info (12134): Parameter "NUMWORDS_B" = "8"
-    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
-    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
-    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
-    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
-    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
-    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
-    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
-    Info (12134): Parameter "INIT_FILE" = "db/CPU.ram0_RegisterFile_878b6b30.hdl.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_cpn1.tdf
-    Info (12023): Found entity 1: altsyncram_cpn1 File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/db/altsyncram_cpn1.tdf Line: 28
+Info (12128): Elaborating entity "StageExecute" for hierarchy "StageExecute:stageexecute_inst" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 217
+Warning (10541): VHDL Signal Declaration warning at StageExecute.vhd(10): used implicit default value for signal "ERROR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd Line: 10
+Warning (10036): Verilog HDL or VHDL warning at StageExecute.vhd(53): object "fRsrc1_forwardable" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd Line: 53
+Warning (10036): Verilog HDL or VHDL warning at StageExecute.vhd(54): object "fRsrc2_forwardable" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd Line: 54
+Info (12128): Elaborating entity "ALU" for hierarchy "StageExecute:stageexecute_inst|ALU:alu_cmp" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd Line: 86
+Info (12128): Elaborating entity "StageMemory" for hierarchy "StageMemory:stagememory_inst" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 257
+Warning (10541): VHDL Signal Declaration warning at StageMemory.vhd(44): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 44
+Warning (10036): Verilog HDL or VHDL warning at StageMemory.vhd(47): object "fMW" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 47
+Warning (10036): Verilog HDL or VHDL warning at StageMemory.vhd(48): object "fP" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 48
+Warning (10036): Verilog HDL or VHDL warning at StageMemory.vhd(49): object "fF" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 49
+Warning (10036): Verilog HDL or VHDL warning at StageMemory.vhd(53): object "sAddr" assigned a value but never read File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 53
+Warning (10541): VHDL Signal Declaration warning at StageMemory.vhd(56): used implicit default value for signal "sMemValue" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 56
+Warning (10540): VHDL Signal Declaration warning at StageMemory.vhd(62): used explicit default value for signal "SP_DEFAULT" because signal was never assigned a value File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 62
+Warning (10492): VHDL Process Statement warning at StageMemory.vhd(98): signal "SP_DEFAULT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd Line: 98
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "OUTPUT[0]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[1]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[2]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[3]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[4]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[5]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[6]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[7]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[8]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[9]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[10]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[11]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[12]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[13]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[14]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[15]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[16]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[17]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[18]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[19]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[20]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[21]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[22]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[23]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[24]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[25]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[26]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[27]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[28]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[29]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[30]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "OUTPUT[31]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 9
+    Warning (13410): Pin "ERROR[0]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 14
+    Warning (13410): Pin "ERROR[1]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 14
+    Warning (13410): Pin "ERROR[2]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 14
+    Warning (13410): Pin "ERROR_PC[0]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[1]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[2]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[3]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[4]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[5]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[6]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[7]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[8]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[9]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[10]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[11]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[12]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[13]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[14]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[15]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[16]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[17]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[18]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[19]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[20]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[21]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[22]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[23]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[24]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[25]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[26]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[27]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[28]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[29]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[30]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+    Warning (13410): Pin "ERROR_PC[31]" is stuck at GND File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 15
+Info (17049): 172 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 171 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 43 input pins
-    Info (21059): Implemented 64 output pins
-    Info (21064): Implemented 64 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4869 megabytes
-    Info: Processing ended: Mon Dec  4 17:46:18 2023
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:27
+Warning (21074): Design contains 35 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "INPUT[0]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[1]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[2]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[3]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[4]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[5]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[6]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[7]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[8]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[9]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[10]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[11]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[12]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[13]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[14]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[15]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[16]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[17]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[18]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[19]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[20]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[21]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[22]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[23]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[24]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[25]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[26]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[27]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[28]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[29]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[30]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INPUT[31]" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "INT" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 11
+    Warning (15610): No output dependent on input pin "RESET" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 11
+    Warning (15610): No output dependent on input pin "CLK" File: C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd Line: 11
+Info (21057): Implemented 102 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 35 input pins
+    Info (21059): Implemented 67 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 134 warnings
+    Info: Peak virtual memory: 4872 megabytes
+    Info: Processing ended: Tue Dec  5 18:28:24 2023
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:16
 
 

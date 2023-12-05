@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Mon Dec  4 17:46:18 2023
+Analysis & Synthesis Status : Successful - Tue Dec  5 18:28:24 2023
 Quartus Prime Version : 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 Revision Name : CPU
-Top-level Entity Name : RegisterFile
+Top-level Entity Name : CPU
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
 Total registers : 0
-Total pins : 107
+Total pins : 102
 Total virtual pins : 0
-Total block memory bits : 512
+Total block memory bits : 0
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
