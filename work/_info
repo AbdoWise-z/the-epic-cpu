@@ -61,9 +61,9 @@ V`@YW?]jAShA_ZDb1knXA?3
 !s100 INR[ZVGmTfdEfUgG@oiEe3
 R6
 32
-Z18 !s110 1701792430
+Z18 !s110 1701887592
 !i10b 1
-Z19 !s108 1701792430.000000
+Z19 !s108 1701887592.000000
 Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd|
 Z21 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd|
 !i113 1
@@ -182,9 +182,9 @@ VHF4kPZWGIg=H:BRGD;`0;0
 !s100 @4d4Mnl@3X;58DREh<GHU2
 R6
 32
-Z37 !s110 1701792431
+Z37 !s110 1701887593
 !i10b 1
-Z38 !s108 1701792431.000000
+Z38 !s108 1701887593.000000
 Z39 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd|
 Z40 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd|
 !i113 1
@@ -612,7 +612,7 @@ R102
 R11
 R12
 Ememory
-Z103 w1701792410
+Z103 w1701792759
 R93
 R14
 R1
@@ -750,9 +750,9 @@ VkCae]G_SF=RlVH`:]29zl2
 !s100 >P?22zfY`BQVl<?nOn<oD3
 R6
 32
-R18
+R37
 !i10b 1
-R19
+R38
 Z121 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd|
 Z122 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd|
 !i113 1
@@ -769,9 +769,9 @@ VkF71aRU91JSnj7@GS5MSC2
 !s100 ]WFJRSJ2Loed3Q0WZd0A?1
 R6
 32
-R18
+R37
 !i10b 1
-R19
+R38
 R121
 R122
 !i113 1
@@ -791,9 +791,9 @@ V5[UPdQMBFaLD1b3[9ISc41
 !s100 99b`FmKnlS9]EgPN[VT;f3
 R6
 32
-R18
+R37
 !i10b 1
-R19
+R38
 Z126 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd|
 Z127 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd|
 !i113 1
@@ -810,16 +810,16 @@ V3kEDbA27RaAM8SI?Y>9790
 !s100 F<eIWMKEV4=BHgRKL>M=J0
 R6
 32
-R18
+R37
 !i10b 1
-R19
+R38
 R126
 R127
 !i113 1
 R11
 R12
 Estageexecute
-Z128 w1701788909
+Z128 w1701793942
 R14
 R1
 R2
@@ -845,10 +845,10 @@ R14
 R1
 R2
 DEx4 work 12 stageexecute 0 22 JeQjcP^KJ8`M2<;Ga;Ej10
-l56
+l57
 L25
-V;MdIK=U1mRTUfL[iB4bf@0
-!s100 `3fl6Q[gEL6GTT4j[8mg90
+V@[o=S]3kLL<JT::]U[UQV2
+!s100 3IPQ1jMS=5dozhAElALJK3
 R6
 32
 R37
@@ -901,7 +901,7 @@ R137
 R11
 R12
 Estagefetch
-Z138 w1701786820
+Z138 w1701794166
 R14
 R1
 R2
@@ -942,7 +942,7 @@ R142
 R11
 R12
 Estagememory
-Z143 w1701784404
+Z143 w1701794169
 R14
 R1
 R2
