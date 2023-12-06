@@ -202,14 +202,14 @@ Instructions:
     }
 
     ADD/SUB/AND/OR/XOR/CMP {
-        00111/01000/01001/01010/01011/011000
+        00111/01000/01001/01010/01011/01100
         RS     = 1
         Op1S   = 00
         Op2S   = 00
         JT     = 00
         OE     = 0
         ALU-OP = 0101/0110/0111/1000/1001/1010
-        WB     = 1
+        WB     = 1 (Except for CMP = 0)
         Rdst   = R(in)
         SPO    = 00
         PCU    = 0
