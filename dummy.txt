@@ -1,13 +1,14 @@
+add wave -position end  sim:/cpu/CLK
+add wave -position end  sim:/cpu/INPUT
+add wave -position end  sim:/cpu/INT
+add wave -position end  sim:/cpu/OUTPUT
+add wave -position end  sim:/cpu/RESET
+add wave -position end  sim:/cpu/stagedecode_inst/registerfile_inst/rgFile
+add wave -position end  sim:/cpu/stagefetch_inst/InternalPC
+add wave -position end  sim:/cpu/stagefetch_inst/Addr
 add wave -position end  sim:/cpu/stagedecode_inst/ControlSignals
 add wave -position end  sim:/cpu/stagedecode_inst/inst
-add wave -position end  sim:/cpu/stagedecode_inst/oRegControl
-add wave -position end  sim:/cpu/stagedecode_inst/oALUControl
-add wave -position end  sim:/cpu/stageexecute_inst/ALU_OP
-add wave -position end  sim:/cpu/stageexecute_inst/Op_1
-add wave -position end  sim:/cpu/stageexecute_inst/Op_2
-add wave -position end  sim:/cpu/stageexecute_inst/oRegisterControl
-add wave -position end  sim:/cpu/stagememory_inst/Value
-add wave -position end  sim:/cpu/stagememory_inst/oValue
-add wave -position end  sim:/cpu/stagememory_inst/oWB
-add wave -position end  sim:/cpu/stagememory_inst/oRdst
+add wave -position end  sim:/cpu/stagedecode_inst/INT_CRT
+force -freeze sim:/cpu/INT 0 0
+force -freeze sim:/cpu/CLK 0 0, 1 {50 ps} -r 100
 force -freeze sim:/cpu/RESET 0 0

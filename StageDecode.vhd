@@ -5,7 +5,8 @@ use ieee.numeric_std.all;
 entity StageDecode is
     port(
         clk , flush , reset : in std_logic;
-        INPUT : in std_logic_vector(0 to 31);
+        INPUT   : in std_logic_vector(0 to 31); -- INPUT INSTRUCTION
+        INT_CRT : in std_logic_vector(0 to 3);  -- INPUT INT CONTROL
 
         --decode stuff
         iPC : in std_logic_vector(31 downto 0);
@@ -36,13 +37,7 @@ entity StageDecode is
 end StageDecode;
 
 architecture StageDecodeArch of StageDecode is
-    component ControlUnit is
-        port (
-          op_code : in std_logic_vector(4 downto 0);
-          sig     : out std_logic_vector(22 downto 0)
-        ) ;
-    end component;
-
+  
     component RegisterFile is
         port (
           clk              : in std_logic;
@@ -109,9 +104,10 @@ begin
     fImmd1   <= inst(16 to 31) when flush = '0' else (others => '0');
     fImmd2   <= inst(8  to 13) when flush = '0' else (others => '0');
 
-    controlunit_inst : ControlUnit
+    controlunit_inst: entity work.ControlUnit
     port map (
       op_code => fOpCode,
+      int_sig => INT_CRT,
       sig     => ControlSignals
     );
 

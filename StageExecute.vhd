@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity StageExecute is
     port(
-        clk , flush : in std_logic;
+        clk , flush , reset : in std_logic;
 
         Rsrc1_forwardable , Rsrc2_forwardable , execute_forward_PFR , execute_forward_WB , memory_forward_WB , iMW , iMR , i_F , i_P , OE : in std_logic;
         ERROR ,  oMR , oMW ,  o_F , o_P , ZeroFlag : out std_logic;
@@ -69,10 +69,22 @@ begin
     fRsrc1_forwardable <= Rsrc1_forwardable when flush = '0' else '0';
     fRsrc2_forwardable <= Rsrc2_forwardable when flush = '0' else '0';
 
-    
+    forwardingunit_inst: entity work.ForwardingUnit
+    port map (
+      R1Forwardable => fRsrc1_forwardable,
+      R2Forwardable => fRsrc2_forwardable,
+      MemoryWB      => memory_forward_WB,
+      ExecuteWB     => execute_forward_WB,
+      Rsrc1         => Rsrc1,
+      Rsrc2         => Rsrc2,
+      MemoryRdst    => memory_forward_Rdst,
+      ExecuteRdst   => execute_forward_Rdst,
+      Op1Selector   => FORWARD_out1,
+      Op2Selector   => FORWARD_out2
+    );
 
-    FORWARD_out1 <= (others => '0');  --for now...
-    FORWARD_out2 <= (others => '0');  --for now...
+    --FORWARD_out1 <= (others => '0');  --for now...
+    --FORWARD_out2 <= (others => '0');  --for now...
 
     ALU_A <= Op_1                   when FORWARD_out1 = "00" 
         else execute_forward_Value  when FORWARD_out1 = "01"
@@ -102,24 +114,35 @@ begin
     process(clk)
     begin
         if (rising_edge(clk)) then
+            if (reset = '1') then
+                oRegisterControl <= (others => '0');
+                oPC <= (others => '0');
+                o_F <= '0';
+                o_P <= '0';
+                oMR <= '0';
+                oMW <= '0';
+                ALU_FRin <= "0000";
+                oValue <= (others => '0');
+                Addr <= (others => '0');
+                sOUTPUT <= (others => '0');
+            else
+                oRegisterControl <= fRegisterControl;
+                oPC <= iPC;
+                o_F <= fF;
+                o_P <= fP;
+                oMR <= fMR;
+                oMW <= fMW;
 
-            oRegisterControl <= fRegisterControl;
-            oPC <= iPC;
-            o_F <= fF;
-            o_P <= fP;
-            oMR <= fMR;
-            oMW <= fMW;
-
-            ALU_FRin <= sALU_FRin;
-            oValue <= sValue;
-            Addr <= ALU_A;
-            
-            if fOE = '1' then
-                sOUTPUT <= sValue;
-            else 
-                sOUTPUT <= sOUTPUT;
+                ALU_FRin <= sALU_FRin;
+                oValue <= sValue;
+                Addr <= ALU_A;
+                
+                if fOE = '1' then
+                    sOUTPUT <= sValue;
+                else 
+                    sOUTPUT <= sOUTPUT;
+                end if;
             end if;
-            
         end if;
     end process;
 

@@ -19,56 +19,57 @@ end entity;
 
 architecture CPU_ARCH of CPU is
     component StageFetch is
-        port (
-          clk , reset   : in std_logic;
-          PCU , ZeroFlag , ExecuteWB , MemWB , ControllerPCSelect : in std_logic;
-          Rdst , ERdst , MRdst : in std_logic_vector(2 downto 0);
-          JmpType : in std_logic_vector(1 downto 0);
-          DecodeValue , ExecuteValue , MemoryValue , ControllerValue : in std_logic_vector(31 downto 0);
-      
-          Error   : out std_logic;
-          InstOut : out std_logic_vector(31 downto 0);
-          nextPC  : out std_logic_vector(31 downto 0);
-          Flush_Fetch , Flush_Decode , Flush_Execute : out std_logic
-        );
+      port (
+        clk , reset , INT  : in std_logic;
+        PCU , ZeroFlag , ExecuteWB , MemWB : in std_logic;
+        Rdst , ERdst , MRdst : in std_logic_vector(2 downto 0);
+        JmpType : in std_logic_vector(1 downto 0);
+        DecodeValue , ExecuteValue , MemoryValue : in std_logic_vector(31 downto 0);
+    
+        Error   : out std_logic;
+        InstOut   : out std_logic_vector(31 downto 0);
+        IntSigOut : out std_logic_vector(3 downto 0);
+        nextPC  : out std_logic_vector(31 downto 0);
+        Flush_Fetch , Flush_Decode , Flush_Execute : out std_logic
+      );
     end component;
 
     component StageDecode is
         port(
-            clk , flush , reset : in std_logic;
-            INPUT : in std_logic_vector(0 to 31);
-    
-            --decode stuff
-            iPC : in std_logic_vector(31 downto 0);
-            oPC : out std_logic_vector(31 downto 0);
-            ERROR : out std_logic;
-            inst : in std_logic_vector(0 to 31);
-    
-            DecodeValue   : out std_logic_vector(31 downto 0);
-            oJumpControl  : out std_logic_vector(1 downto 0);
-            oPortControl  : out std_logic;
-            oALUControl   : out std_logic_vector(3 downto 0);
-            oRegControl   : out std_logic_vector(7 downto 0);
-            oMemControl   : out std_logic_vector(5 downto 0);
-            oR1_for       : out std_logic;
-            oR2_for       : out std_logic;
-            oRsrc1        : out std_logic_vector(2 downto 0);
-            oRsrc2        : out std_logic_vector(2 downto 0);
-            oOp1          : out std_logic_vector(31 downto 0);
-            oOp2          : out std_logic_vector(31 downto 0);
-    
-    
-            --WB stuff
-            iRdst  : in std_logic_vector(2 downto 0);
-            iWB    : in std_logic;
-            iValue : in std_logic_vector(0 to 31)
-    
+          clk , flush , reset : in std_logic;
+          INPUT   : in std_logic_vector(0 to 31); -- INPUT INSTRUCTION
+          INT_CRT : in std_logic_vector(0 to 3);  -- INPUT INT CONTROL
+
+          --decode stuff
+          iPC : in std_logic_vector(31 downto 0);
+          oPC : out std_logic_vector(31 downto 0);
+          ERROR : out std_logic;
+          inst : in std_logic_vector(0 to 31);
+
+          DecodeValue   : out std_logic_vector(31 downto 0);
+          oJumpControl  : out std_logic_vector(1 downto 0);
+          oPortControl  : out std_logic;
+          oALUControl   : out std_logic_vector(3 downto 0);
+          oRegControl   : out std_logic_vector(7 downto 0);
+          oMemControl   : out std_logic_vector(5 downto 0);
+          oR1_for       : out std_logic;
+          oR2_for       : out std_logic;
+          oRsrc1        : out std_logic_vector(2 downto 0);
+          oRsrc2        : out std_logic_vector(2 downto 0);
+          oOp1          : out std_logic_vector(31 downto 0);
+          oOp2          : out std_logic_vector(31 downto 0);
+
+
+          --WB stuff
+          iRdst  : in std_logic_vector(2 downto 0);
+          iWB    : in std_logic;
+          iValue : in std_logic_vector(0 to 31)
         );
     end component;
 
     component StageExecute is
         port(
-            clk , flush : in std_logic;
+            clk , flush , reset : in std_logic;
     
             Rsrc1_forwardable , Rsrc2_forwardable , execute_forward_PFR , execute_forward_WB , memory_forward_WB , iMW , iMR , i_F , i_P , OE : in std_logic;
             ERROR ,  oMR , oMW ,  o_F , o_P , ZeroFlag : out std_logic;
@@ -120,12 +121,13 @@ architecture CPU_ARCH of CPU is
     signal dummyError1 , dummyError2 , dummyError3 , dummyError4 : std_logic;
 
     -- Fetch I/O
-    signal sPCU , sZeroFlag , sExecuteWB , sMemWB , sControllerPCSelect   : std_logic;
+    signal sPCU , sZeroFlag , sExecuteWB , sMemWB                         : std_logic;
     signal sJRdst , sERdst , sMRdst                                       : std_logic_vector(2 downto 0);
     signal sJumpType                                                      : std_logic_vector(1 downto 0);
-    signal sDecodeValue , sExecuteValue , sMemoryValue , sControllerValue : std_logic_vector(31 downto 0);
+    signal sDecodeValue , sExecuteValue , sMemoryValue                    : std_logic_vector(31 downto 0);
     signal sInstOut                                                       : std_logic_vector(31 downto 0);
     signal sFlushFetch , sFlushDecode , sFlushExecute                     : std_logic;
+    signal sFetchIntSigOut                                                : std_logic_vector(3 downto 0);
 
     -- Decode I/O
     signal sOutputEnable : std_logic;
@@ -162,12 +164,12 @@ begin
     stagefetch_inst: StageFetch
     port map (
       clk                => clk,
-      reset              => reset,
+      reset              => RESET,
+      INT                => INT,
       PCU                => sPCU,
       ZeroFlag           => sZeroFlag,
       ExecuteWB          => sExecuteWB,
       MemWB              => sMemWB,
-      ControllerPCSelect => sControllerPCSelect,
       Rdst               => sJRdst,
       ERdst              => sERdst,
       MRdst              => sMRdst,
@@ -175,8 +177,8 @@ begin
       DecodeValue        => sDecodeValue,
       ExecuteValue       => sExecuteValue,
       MemoryValue        => sMemoryValue,
-      ControllerValue    => sControllerValue,
       Error              => dummyError1,
+      IntSigOut          => sFetchIntSigOut,
       InstOut            => sInstOut,
       nextPC             => fetchPC,
       Flush_Fetch        => sFlushFetch,
@@ -188,8 +190,9 @@ begin
     port map (
       clk          => clk,
       flush        => sFlushFetch,
-      reset        => reset,
+      reset        => RESET,
       INPUT        => INPUT,
+      INT_CRT      => sFetchIntSigOut,
       iPC          => fetchPC,
       oPC          => decodePC,
       ERROR        => dummyError2,
@@ -218,6 +221,7 @@ begin
     port map (
       clk                   => clk,
       flush                 => sFlushDecode,
+      reset                 => RESET,
       Rsrc1_forwardable     => sR1_for,
       Rsrc2_forwardable     => sR2_for,
       execute_forward_PFR   => sE_RegisterControl(0),
@@ -246,7 +250,7 @@ begin
       Op_2                  => sOp2,
       execute_forward_Value => sExecuteValue,
       memory_forward_Value  => sMemoryValue,
-      FR_forward_Value      => sMemoryValue,
+      FR_forward_Value      => sDirectValue, -- not the best way to do this btw ... 
       iPC                   => decodePC,
       oPC                   => executePC,
       oValue                => sExecuteValue,
@@ -258,7 +262,7 @@ begin
     port map (
       clk       => clk,
       flush     => sFlushExecute,
-      reset     => reset,
+      reset     => RESET,
       iPC       => executePC,
       oPC       => memoryPc,
       ERROR     => dummyError4,
