@@ -32,16 +32,16 @@ Architecture ALUarch of ALU is
     signal sNEG : std_logic_vector(31 downto 0);
     signal sNEGf : std_logic_vector(3 downto 0);
     
-    signal sINC : std_logic_vector(31 downto 0);
+    signal sINC : std_logic_vector(32 downto 0);
     signal sINCf : std_logic_vector(3 downto 0);
     
-    signal sDEC : std_logic_vector(31 downto 0);
+    signal sDEC : std_logic_vector(32 downto 0);
     signal sDECf : std_logic_vector(3 downto 0);
     
-    signal sADD : std_logic_vector(31 downto 0);
+    signal sADD : std_logic_vector(32 downto 0);
     signal sADDf : std_logic_vector(3 downto 0);
     
-    signal sSUB : std_logic_vector(31 downto 0);
+    signal sSUB : std_logic_vector(32 downto 0);
     signal sSUBf : std_logic_vector(3 downto 0);
 
     signal sAND : std_logic_vector(31 downto 0);
@@ -52,9 +52,6 @@ Architecture ALUarch of ALU is
 
     signal sXOR : std_logic_vector(31 downto 0);
     signal sXORf : std_logic_vector(3 downto 0);
-
-    signal sCMP : std_logic_vector(31 downto 0);
-    signal sCMPf : std_logic_vector(3 downto 0);
 
     signal sBITSET : std_logic_vector(31 downto 0);
     signal sBITSETf : std_logic_vector(3 downto 0);
@@ -74,36 +71,30 @@ begin
     sNOP <= (others => '0');
     sNOPf <= FRin;
 
-    -- not
+    -- neg
     sNEG <= std_logic_vector(-signed(A));
     sNEGf <= toBit(sNEG = ZERO) & sNOT(sNEG'high) & FRin(1 downto 0);
 
-    -- neg
+    -- not
     sNOT <= not A;
     sNOTf <= toBit(sNOT = ZERO) & sNOT(sNOT'high) & FRin(1 downto 0);
 
     -- inc
-    sINC <= std_logic_vector(signed(A) + signed(ONE));
-    sINCf <= toBit(sINC = ZERO) & sINC(sINC'high) & toBit(
-        sINC(sINC'high) /= A(A'high) and A(A'high) = ONE(ONE'high)) & FRin(0);
+    sINC <= std_logic_vector(signed('0' & A) + signed('0' & ONE));
+    sINCf <= toBit(sINC(31 downto 0) = ZERO) & sINC(sINC'high) & sINC(32) & FRin(0);
 
     -- dec
-    sDEC <= std_logic_vector(signed(A) + signed(NEG_ONE));
-    sDECf <= toBit(sDEC = ZERO) & sDEC(sDEC'high) & toBit(
-        sDEC(sDEC'high) /= A(A'high) and A(A'high) = NEG_ONE(NEG_ONE'high)) & FRin(0);
+    sDEC <= std_logic_vector(signed('0' & A) + signed('1' & NEG_ONE));
+    sDECf <= toBit(sDEC(31 downto 0) = ZERO) & sDEC(sDEC'high) & sDEC(32) & FRin(0);
 
     -- add
-    sADD <= std_logic_vector(signed(A) + signed(B));
-    sADDf <= toBit(sADD = ZERO) & sADD(sADD'high) & toBit(
-        sADD(sADD'high) /= A(A'high) and A(A'high) = B(B'high)) & FRin(0);
+    sADD <= std_logic_vector(signed('0' & A) + signed('0' & B));
+    sADDf <= toBit(sADD(31 downto 0) = ZERO) & sADD(sADD'high) & sADD(32) & FRin(0);
 
 
     -- sub & CMP
-    sSUB <= std_logic_vector(signed(A) - signed(B));
-    sCMP <= sSUB;
-    sSUBf <= toBit(sSUB = ZERO) & sSUB(sSUB'high) & toBit(
-        sSUB(sSUB'high) /= A(A'high) and A(A'high) = B(B'high)) & FRin(0);
-    sCMPf <= sSUBf;
+    sSUB <= std_logic_vector(signed('0' & A) - signed('0' & B));
+    sSUBf <= toBit(sSUB(31 downto 0) = ZERO) & sSUB(sSUB'high) & sSUB(32) & FRin(0);
 
     -- and
     sAND <= A and B;
@@ -145,23 +136,24 @@ begin
         sBITSET <= sBITSETv;
     end process;
 
-    sBITSETf <= toBit(sBITSET = ZERO) & sBITSET(sBITSET'high) & FRin(1 downto 0);
-    sRCLf <= toBit(sRCL(31 downto 0) = ZERO) & sRCL(sRCL'high) & FRin(1 downto 0);
-    sRCRf <= toBit(sRCR(31 downto 0) = ZERO) & sRCL(sRCR'high) & FRin(1 downto 0);
+    sBITSETf <= toBit(sBITSET = ZERO) & sBITSET(sBITSET'high)  & FRin(1 downto 0);
+    sRCLf <= toBit(sRCL(31 downto 0) = ZERO) & sRCL(31) & sRCL(32) & FRin(0);
+    sRCRf <= toBit(sRCR(31 downto 0) = ZERO) & sRCR(31) & sRCR(32) & FRin(0);
 
     F <= sNOT when S = "0001"
     else sNEG when S = "0010"
-    else sINC when S = "0011"
-    else sDEC when S = "0100"
-    else sADD when S = "0101"
-    else sSUB when S = "0110"
+    else sINC(31 downto 0) when S = "0011"
+    else sDEC(31 downto 0) when S = "0100"
+    else sADD(31 downto 0) when S = "0101"
+    else sSUB(31 downto 0) when S = "0110"
     else sAND when S = "0111"
     else sOR  when S = "1000"
     else sXOR when S = "1001"
-    else sCMP when S = "1010"
+    else sSUB(31 downto 0) when S = "1010"
     else sBITSET when S = "1011"
     else sRCL(31 downto 0) when S = "1100"
     else sRCR(31 downto 0) when S = "1101"
+    else sXOR when S = "1111" -- extra for swap :)
     else sNOP;
 
     FRout <= sNOTf when S = "0001"
@@ -173,7 +165,7 @@ begin
         else sANDf when S = "0111"
         else sORf  when S = "1000"
         else sXORf when S = "1001"
-        else sCMPf when S = "1010"
+        else sSUBf when S = "1010"
         else sBITSETf when S = "1011"
         else sRCLf when S = "1100"
         else sRCRf when S = "1101"

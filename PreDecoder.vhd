@@ -5,6 +5,7 @@ use ieee.numeric_std.all;
 entity PreDecoder is
   port (
     clk    : in std_logic;
+    hazard : in std_logic;
     flush  : in std_logic;
     INT    : in std_logic; -- execute interrupt
     RESET  : in std_logic; -- execute reset
@@ -23,6 +24,8 @@ architecture PreDecoderArch of PreDecoder is
     constant filler  : std_logic_vector(15 downto 0) := (others => '0');
     
     signal half     : std_logic_vector(15 downto 0);
+    signal prev     : std_logic_vector(31 downto 0);
+    signal swap_pre : std_logic_vector(15 downto 0);
     signal multi    : std_logic := '0';
     signal delayedInst : std_logic_vector(15 downto 0);
     
@@ -51,12 +54,13 @@ begin
     else InstIn & filler;
 
     PausePC <= '1' when                                        -- Pause the pc if: (should add "About to reset" but it doesn't really matter tbh)
-        (delay /= "00" and delay /= "01" and flush = '0') or   --   1. hardware writing an instrctuin
+        hazard = '1' or                                        --   0. a hazard
+        (delay /= "00" and flush = '0') or                     --   1. hardware writing an instrctuin
         ResetSequance /= "00" or                               --   2. in an ResetSequance
         IntSequance /= "00" or                                 --   3. in an Interrupt Sequance
-        (INT = '1' and multi = '0') or                         --   4. About to start an interrupt Sequance
-        (multi = '0' and InstIn(15 downto 11) = "11111") or    --   5. About to start a delay due SWAP
-        (multi = '0' and InstIn(15 downto 11) = "11110")       --   6. About to start a delay due RTI
+        (INT = '1' and multi = '0') --or                         --   4. About to start an interrupt Sequance
+        -- (multi = '0' and InstIn(15 downto 11) = "11111") or    --   5. About to start a delay due SWAP
+        -- (multi = '0' and InstIn(15 downto 11) = "11110")       --   6. About to start a delay due RTI
     else '0';
 
     process (clk) begin
@@ -68,14 +72,14 @@ begin
                 delayType <= "00";
                 ResetSequance <= "11";
                 InstOut <= RST_INST; -- RESET 0
-                intSigOut <= "1000";
+                intSigOut <= "0000";
             else
                 if (ResetSequance /= "00") then
                     -- we are in a reset sequance
                     if (ResetSequance = "11") then
                         ResetSequance <= "10";
                         InstOut <= RST_INST; -- RESET 1
-                        intSigOut <= "0000";
+                        intSigOut <= "1000";
                     elsif (ResetSequance = "10") then
                         ResetSequance <= "01";
                         InstOut <= RST_INST; -- RESET 2
@@ -98,20 +102,25 @@ begin
                         else
                             report "IntSequance reached area it shouldn't";
                         end if;
+                    elsif (hazard = '1') then
+                        InstOut   <= prev;
+                        intSigOut <= "0000";
                     elsif (delay /= "00" and flush = '0') then -- we are delayed / we need to write a sequance (swap , RTI)
                         if (delayType = "00") then
                             -- swap type
                             if (delay = "11") then
                                 delay <= "01";
-                                InstOut <= "01011" & InstIn(4 downto 2) & InstIn(7 downto 0) & filler; -- XOR with the same inputs
+                                InstOut <= "11111" & swap_pre(4 downto 2) & swap_pre(7 downto 0) & filler; -- XOR with the same inputs
                                 intSigOut <= "0000"; -- SWAP 1
+                                -- report "sawp 2";
                             elsif (delay = "01") then
                                 delay <= "00";
-                                InstOut <= "01011" & InstIn(7 downto 5) & InstIn(7 downto 0) & filler; -- XOR with the same inputs
+                                InstOut <= "11111" & swap_pre(7 downto 5) & swap_pre(7 downto 0) & filler; -- XOR with the same inputs
                                 intSigOut <= "0000"; -- SWAP 2
+                                -- report "sawp 3";
                             else 
                                 -- should never happen
-                                report "reached a block you shouldn't ever reach ??";
+                                -- report "reached a block you shouldn't ever reach ??";
                             end if;
                         elsif (delayType = "01") then
                             -- rti type
@@ -128,8 +137,24 @@ begin
                             InstOut <= nop;     -- HLT X
                             intSigOut <= "0000";
                             delay <= "11"; -- just hlt indefently
+                        else
+                            -- general type delay [11] (RET)
+                            if (delay = "11") then
+                                delay <= "10";
+                                InstOut <= nop;
+                                intSigOut <= "0000";
+                            elsif (delay = "10") then
+                                delay <= "01";
+                                InstOut <= nop;
+                                intSigOut <= "0000";
+                            elsif (delay = "01") then
+                                delay <= "00";
+                                InstOut <= nop;
+                                intSigOut <= "0000";
+                            end if;
                         end if;
                     else
+                        
                         -- not delyad (or flushed) or interrupted
                         if (INT = '1' and multi = '0') then -- multi = 1 then we still have to fetch this instruction (complete at 2-cycle instrctuin)
                             -- we should start an interrupt sequance
@@ -139,6 +164,8 @@ begin
                             InstOut     <= INT_INST; -- INT 0
                             intSigOut   <= "1001"; 
                             multi <= '0';
+                            delay <= "00";
+                            delayType <= "00";
                         else 
                             -- now this is the normal case execution (finally heh)
                             if (multi = '1') then
@@ -146,11 +173,14 @@ begin
                                 -- in this cycle we are only finishing of an instruction that was 2-cycle instruction
                                 multi <= '0';
                                 delay <= "00";
+                                delayType <= "00";
                                 InstOut <= NormalExecutionInstOut;
                                 intSigOut <= "0000";
+                                prev <= NormalExecutionInstOut;
                             else
-                                if (InstIn(15 downto 11) = MULTI_1 or InstIn(15 downto 11) = MULTI_2 or InstIn(15 downto 11) = MULTI_3 or InstIn(15 downto 11) = MULTI_3) then
+                                if (InstIn(15 downto 11) = MULTI_1 or InstIn(15 downto 11) = MULTI_2 or InstIn(15 downto 11) = MULTI_3 or InstIn(15 downto 11) = MULTI_4) then
                                     InstOut <= NormalExecutionInstOut;
+                                    prev <= NormalExecutionInstOut;
                                     intSigOut <= "0000"; 
                                     half <= InstIn;
                                     multi <= '1';
@@ -158,24 +188,37 @@ begin
                                 elsif (InstIn(15 downto 11) = "11111") then -- SWAP
                                     delayedInst <= InstIn;
                                     -- 15,11 op | 10,8 Rdst | 7,5 Rsrc1 | 4,2 Rsrc1
-                                    InstOut <= "01011" & InstIn(7 downto 5) & InstIn(7 downto 0) & filler; -- XOR with the same inputs
+                                    InstOut <= "11111" & InstIn(7 downto 5) & InstIn(7 downto 0) & filler; -- XOR with the same inputs
+                                    prev    <= "11111" & InstIn(7 downto 5) & InstIn(7 downto 0) & filler;
+                                    swap_pre <= InstIn;
+                                    -- report "sawp 1";
                                     intSigOut <= "0000"; -- SWAP 0
                                     delay <= "11";
                                     delayType <= "00";
                                 elsif (InstIn(15 downto 11) = "11110") then -- RTI
                                     delayedInst <= InstIn;
                                     InstOut <= "11110" & InstIn(10 downto 8) & InstIn(10 downto 3) & filler; -- POP-FR (RET) other bits are useless
+                                    prev    <= "11110" & InstIn(10 downto 8) & InstIn(10 downto 3) & filler;
                                     intSigOut <= "0000"; -- RTI 0
                                     delay <= "01";
                                     delayType <= "01";
                                 elsif (InstIn(15 downto 11) = "11100") then -- HLT
                                     delayedInst <= InstIn;
                                     InstOut <= nop; -- just nop
+                                    prev    <= nop;
                                     intSigOut <= "0000"; -- HLT 0
                                     delay <= "11";
                                     delayType <= "10";
+                                elsif (InstIn(15 downto 11) = "11101") then -- RET
+                                    delayedInst <= InstIn;
+                                    InstOut <= NormalExecutionInstOut; -- just nop
+                                    prev    <= NormalExecutionInstOut;
+                                    intSigOut <= "0000"; -- HLT 0
+                                    delay     <= "11";
+                                    delayType <= "11";
                                 else -- normal 1-cycle instruction
                                     InstOut <= NormalExecutionInstOut;
+                                    prev    <= NormalExecutionInstOut;
                                     intSigOut <= "0000";
                                     delay <= "00";
                                 end if;

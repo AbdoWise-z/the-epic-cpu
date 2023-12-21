@@ -25,7 +25,7 @@ begin
     else "01" when JmpType = "01" and Rdst = ERdst and ExecuteWB = '1' -- take ex if we can
     else "11" when JmpType = "01" and Rdst = MRdst and MemWB     = '1' -- take mem if we can
     else "10" when JmpType = "01"                                      -- otherwise take decode
-                                      -- conditional jumps  (check zero flag) : take execute if its being forward other wise mem other wise decode
+                                       -- conditional jumps  (check zero flag) : take execute if its being forward other wise mem other wise decode
     else "01" when JmpType = "10" and ZeroFlag = '1' and Rdst = ERdst and ExecuteWB = '1' -- take ex if we can
     else "11" when JmpType = "10" and ZeroFlag = '1' and Rdst = MRdst and MemWB     = '1' -- take mem if we can
     else "10" when JmpType = "10" and ZeroFlag = '1'                                      -- otherwise take decode

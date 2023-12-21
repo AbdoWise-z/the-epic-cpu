@@ -92,24 +92,26 @@ begin
     sValue    <= Value when fMR     = '0' else sMemValue;
     oMemValue <= sMemValue;
 
-    process(clk , reset)
+    process(clk)
     begin
-        if (reset = '1') then
-            SP <= SP_DEFAULT;
-        elsif (clk'event and clk = '1') then
-            if (fSPO(1) = '1') then
-                if (fSPO(0) = '1') then
-                    SP <= SP_M2;
-                else
-                    SP <= SP_P2;
+        if (clk'event and clk = '1') then
+            if (reset = '1') then
+                SP <= SP_DEFAULT;
+            else
+                if (fSPO(1) = '1') then
+                    if (fSPO(0) = '1') then
+                        SP <= SP_M2;
+                    else
+                        SP <= SP_P2;
+                    end if;
                 end if;
+                oRdst   <= iRdst;
+                oWB     <= fWB;
+                oPCU    <= fPCU;
+                oValue  <= sValue;
+                oPC     <= iPC;
+                ERROR   <= err and fMR;
             end if;
-            oRdst   <= iRdst;
-            oWB     <= fWB;
-            oPCU    <= fPCU;
-            oValue  <= sValue;
-            oPC     <= iPC;
-            ERROR   <= err and fMR;
         end if;
 
     end process ;

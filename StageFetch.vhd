@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 entity StageFetch is
   port (
-    clk , reset , INT  : in std_logic;
+    clk , reset , INT , Hazard  : in std_logic;
     PCU , ZeroFlag , ExecuteWB , MemWB : in std_logic;
     Rdst , ERdst , MRdst : in std_logic_vector(2 downto 0);
     JmpType : in std_logic_vector(1 downto 0);
@@ -13,7 +13,7 @@ entity StageFetch is
     InstOut   : out std_logic_vector(31 downto 0);
     IntSigOut : out std_logic_vector(3 downto 0);
     nextPC  : out std_logic_vector(31 downto 0);
-    Flush_Fetch , Flush_Decode , Flush_Execute : out std_logic
+    Flush_Fetch , Flush_Decode , Flush_Execute , oReset : out std_logic
   );
 end StageFetch;
 
@@ -62,6 +62,7 @@ begin
     predecoder_inst: entity work.PreDecoder
     port map (
       clk       => clk,
+      hazard    => Hazard,
       flush     => PCCFlush,
       INT       => INT,
       RESET     => RESET,
@@ -83,7 +84,7 @@ begin
                 InternalPC <= Addr;
                 nextPC <= Addr;
             end if;
-            
+            oReset <= reset;
         end if;
         -- InstOut is already clk latched so no need to latch it again
     end process;

@@ -7,7 +7,7 @@ entity StageExecute is
         clk , flush , reset : in std_logic;
 
         Rsrc1_forwardable , Rsrc2_forwardable , execute_forward_PFR , execute_forward_WB , memory_forward_WB , iMW , iMR , i_F , i_P , OE : in std_logic;
-        ERROR ,  oMR , oMW ,  o_F , o_P , ZeroFlag : out std_logic;
+        ERROR ,  oMR , oMW ,  o_F , o_P , ZeroFlag , oReset : out std_logic;
 
         iRegisterControl : in std_logic_vector(7 downto 0);
         oRegisterControl : out std_logic_vector(7 downto 0);
@@ -114,6 +114,7 @@ begin
     process(clk)
     begin
         if (rising_edge(clk)) then
+            oReset <= reset;
             if (reset = '1') then
                 oRegisterControl <= (others => '0');
                 oPC <= (others => '0');

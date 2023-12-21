@@ -18,103 +18,6 @@ entity CPU is
 end entity;
 
 architecture CPU_ARCH of CPU is
-    component StageFetch is
-      port (
-        clk , reset , INT  : in std_logic;
-        PCU , ZeroFlag , ExecuteWB , MemWB : in std_logic;
-        Rdst , ERdst , MRdst : in std_logic_vector(2 downto 0);
-        JmpType : in std_logic_vector(1 downto 0);
-        DecodeValue , ExecuteValue , MemoryValue : in std_logic_vector(31 downto 0);
-    
-        Error   : out std_logic;
-        InstOut   : out std_logic_vector(31 downto 0);
-        IntSigOut : out std_logic_vector(3 downto 0);
-        nextPC  : out std_logic_vector(31 downto 0);
-        Flush_Fetch , Flush_Decode , Flush_Execute : out std_logic
-      );
-    end component;
-
-    component StageDecode is
-        port(
-          clk , flush , reset : in std_logic;
-          INPUT   : in std_logic_vector(0 to 31); -- INPUT INSTRUCTION
-          INT_CRT : in std_logic_vector(0 to 3);  -- INPUT INT CONTROL
-
-          --decode stuff
-          iPC : in std_logic_vector(31 downto 0);
-          oPC : out std_logic_vector(31 downto 0);
-          ERROR : out std_logic;
-          inst : in std_logic_vector(0 to 31);
-
-          DecodeValue   : out std_logic_vector(31 downto 0);
-          oJumpControl  : out std_logic_vector(1 downto 0);
-          oPortControl  : out std_logic;
-          oALUControl   : out std_logic_vector(3 downto 0);
-          oRegControl   : out std_logic_vector(7 downto 0);
-          oMemControl   : out std_logic_vector(5 downto 0);
-          oR1_for       : out std_logic;
-          oR2_for       : out std_logic;
-          oRsrc1        : out std_logic_vector(2 downto 0);
-          oRsrc2        : out std_logic_vector(2 downto 0);
-          oOp1          : out std_logic_vector(31 downto 0);
-          oOp2          : out std_logic_vector(31 downto 0);
-
-
-          --WB stuff
-          iRdst  : in std_logic_vector(2 downto 0);
-          iWB    : in std_logic;
-          iValue : in std_logic_vector(0 to 31)
-        );
-    end component;
-
-    component StageExecute is
-        port(
-            clk , flush , reset : in std_logic;
-    
-            Rsrc1_forwardable , Rsrc2_forwardable , execute_forward_PFR , execute_forward_WB , memory_forward_WB , iMW , iMR , i_F , i_P , OE : in std_logic;
-            ERROR ,  oMR , oMW ,  o_F , o_P , ZeroFlag : out std_logic;
-    
-            iRegisterControl : in std_logic_vector(7 downto 0);
-            oRegisterControl : out std_logic_vector(7 downto 0);
-    
-            VS : in std_logic_vector(1 downto 0);
-    
-            Rsrc1 , Rsrc2 , execute_forward_Rdst , memory_forward_Rdst : in std_logic_vector(2 downto 0);
-            ALU_OP : in std_logic_vector(3 downto 0);
-    
-            Op_1 , Op_2 , execute_forward_Value , memory_forward_Value , FR_forward_Value , iPC : in std_logic_vector(31 downto 0);
-            oPC , oValue , Addr , OUTPUT : out std_logic_vector(31 downto 0)
-        );
-    end component;
-
-    component StageMemory is
-        port (
-          clk , flush , reset : in std_logic;
-          iPC : in std_logic_vector(31 downto 0);
-          oPC : out std_logic_vector(31 downto 0);
-          ERROR : out std_logic;
-      
-          -- Register Control In
-          iWB , iPCU : in std_logic;
-          iRdst : in std_logic_vector(2 downto 0);
-          iSPO  : in std_logic_vector(1 downto 0);
-      
-          -- Register Control out
-          oWB , oPCU : out std_logic;
-          oRdst : out std_logic_vector(2 downto 0);
-      
-          -- Memory inputs
-          iMR , iMW , i_F , i_P : in std_logic;
-          
-          -- inputs
-          Addr  : in std_logic_vector(31 downto 0);
-          Value : in std_logic_vector(31 downto 0);
-      
-          -- Outputs
-          oValue    : out std_logic_vector(31 downto 0);
-          oMemValue : out std_logic_vector(31 downto 0)
-        ) ;
-    end component;
 
     -- common
     signal fetchPC , decodePC , executePC , memoryPc : std_logic_vector(31 downto 0);
@@ -153,18 +56,29 @@ architecture CPU_ARCH of CPU is
     -- Memory I/O
     signal sDirectValue : std_logic_vector(0 to 31);
 
-begin
+    -- Hazard unit
+    signal sHazard    : std_logic;
+    signal sDRdst     : std_logic_vector(2 downto 0);
+    signal sDWB, sDMR : std_logic;
 
+    -- reset wires
+    signal resetF , resetD , resetE , resetM : std_logic;
+    signal resetMM : std_logic; -- just an early reset signal to the memory to be able to load the pc
+    
+begin
     sJRdst <= sD_RegControl(6 downto 4);
     sERdst <= sE_RegisterControl(6 downto 4);
     sMRdst <= sRdst;
     sExecuteWB <= sE_RegisterControl(7);
     sMemWB <= sWB;
+    resetF <= RESET;
 
-    stagefetch_inst: StageFetch
+    stagefetch_inst: entity work.StageFetch
     port map (
       clk                => clk,
-      reset              => RESET,
+      reset              => resetF,
+      oReset             => resetD,
+      Hazard             => sHazard,
       INT                => INT,
       PCU                => sPCU,
       ZeroFlag           => sZeroFlag,
@@ -186,11 +100,20 @@ begin
       Flush_Execute      => sFlushExecute
     );
 
-    stagedecode_inst: StageDecode
+    sDRdst <= sD_RegControl(6 downto 4);
+    sDWB   <= sD_RegControl(7);
+    sDMR   <= sMemControl(5);
+    
+    stagedecode_inst: entity work.StageDecode
     port map (
       clk          => clk,
+      eRdst        => sDRdst,
+      eWB          => sDWB,
+      eMR          => sDMR,
+      Hazard       => sHazard,
       flush        => sFlushFetch,
-      reset        => RESET,
+      reset        => resetD,
+      oReset       => resetE,
       INPUT        => INPUT,
       INT_CRT      => sFetchIntSigOut,
       iPC          => fetchPC,
@@ -216,12 +139,12 @@ begin
 
     
 
-    -- TODO : add PFR for interrupts
-    stageexecute_inst: StageExecute
+    stageexecute_inst: entity work.StageExecute
     port map (
       clk                   => clk,
       flush                 => sFlushDecode,
-      reset                 => RESET,
+      reset                 => resetE,
+      oReset                => resetM,
       Rsrc1_forwardable     => sR1_for,
       Rsrc2_forwardable     => sR2_for,
       execute_forward_PFR   => sE_RegisterControl(0),
@@ -257,12 +180,12 @@ begin
       Addr                  => sAddr,
       OUTPUT                => OUTPUT
     );
-    
-    stagememory_inst: StageMemory
+
+    stagememory_inst: entity work.StageMemory
     port map (
       clk       => clk,
       flush     => sFlushExecute,
-      reset     => RESET,
+      reset     => resetM,
       iPC       => executePC,
       oPC       => memoryPc,
       ERROR     => dummyError4,
