@@ -41,6 +41,9 @@ architecture PreDecoderArch of PreDecoder is
     signal ResetSequance : std_logic_vector(1 downto 0) := "00"; -- reset sequance is : load pc 
 
     signal NormalExecutionInstOut : std_logic_vector(31 downto 0);
+
+    signal JzWait        : std_logic := '0';
+    signal shouldInt     : std_logic := '0';
     
 begin
 
@@ -53,14 +56,14 @@ begin
     else nop when InstIn(15 downto 11) = MULTI_4
     else InstIn & filler;
 
-    PausePC <= '1' when                                        -- Pause the pc if: (should add "About to reset" but it doesn't really matter tbh)
-        hazard = '1' or                                        --   0. a hazard
-        (delay /= "00" and flush = '0') or                     --   1. hardware writing an instrctuin
-        ResetSequance /= "00" or                               --   2. in an ResetSequance
-        IntSequance /= "00" or                                 --   3. in an Interrupt Sequance
-        (INT = '1' and multi = '0') --or                         --   4. About to start an interrupt Sequance
-        -- (multi = '0' and InstIn(15 downto 11) = "11111") or    --   5. About to start a delay due SWAP
-        -- (multi = '0' and InstIn(15 downto 11) = "11110")       --   6. About to start a delay due RTI
+    PausePC <= '1' when                                                             -- Pause the pc if: (should add "About to reset" but it doesn't really matter tbh)
+        hazard = '1' or                                                             --   0. a hazard
+        (delay /= "00" and flush = '0') or                                          --   1. hardware writing an instrctuin
+        ResetSequance /= "00" or                                                    --   2. in an ResetSequance
+        IntSequance /= "00" or                                                      --   3. in an Interrupt Sequance
+        ((INT = '1' or shouldInt = '1') and multi = '0' and JzWait = '0') --or      --   4. About to start an interrupt Sequance
+        -- (multi = '0' and InstIn(15 downto 11) = "11111") or                      --   5. About to start a delay due SWAP
+        -- (multi = '0' and InstIn(15 downto 11) = "11110")                         --   6. About to start a delay due RTI
     else '0';
 
     process (clk) begin
@@ -73,6 +76,8 @@ begin
                 ResetSequance <= "11";
                 InstOut <= RST_INST; -- RESET 0
                 intSigOut <= "0000";
+                shouldInt <= '0';
+                JzWait    <= '0';
             else
                 if (ResetSequance /= "00") then
                     -- we are in a reset sequance
@@ -103,9 +108,17 @@ begin
                             report "IntSequance reached area it shouldn't";
                         end if;
                     elsif (hazard = '1') then
+                        if (INT = '1') then
+                            shouldInt <= '1';
+                        end if;
+
                         InstOut   <= prev;
                         intSigOut <= "0000";
                     elsif (delay /= "00" and flush = '0') then -- we are delayed / we need to write a sequance (swap , RTI)
+                        if (INT = '1') then
+                            shouldInt <= '1';
+                        end if;
+
                         if (delayType = "00") then
                             -- swap type
                             if (delay = "11") then
@@ -154,19 +167,24 @@ begin
                             end if;
                         end if;
                     else
-                        
                         -- not delyad (or flushed) or interrupted
-                        if (INT = '1' and multi = '0') then -- multi = 1 then we still have to fetch this instruction (complete at 2-cycle instrctuin)
+                        if ((INT = '1' or shouldInt = '1') and multi = '0' and JzWait = '0') then -- multi = 1 then we still have to fetch this instruction (complete at 2-cycle instrctuin)
                             -- we should start an interrupt sequance
                             -- sequance is as fullows
                             -- PUSH PC , PUSH FR , LDD PC
                             IntSequance <= "11"; -- PUSH PC
                             InstOut     <= INT_INST; -- INT 0
                             intSigOut   <= "1001"; 
+                            shouldInt   <= '0';
                             multi <= '0';
                             delay <= "00";
                             delayType <= "00";
+                            JzWait    <= '0';
                         else 
+                            if (INT = '1') then
+                                shouldInt <= '1';
+                            end if;
+
                             -- now this is the normal case execution (finally heh)
                             if (multi = '1') then
                                 -- should nop this instruction and reset the multi flag
@@ -177,6 +195,7 @@ begin
                                 InstOut <= NormalExecutionInstOut;
                                 intSigOut <= "0000";
                                 prev <= NormalExecutionInstOut;
+                                JzWait    <= '0';
                             else
                                 if (InstIn(15 downto 11) = MULTI_1 or InstIn(15 downto 11) = MULTI_2 or InstIn(15 downto 11) = MULTI_3 or InstIn(15 downto 11) = MULTI_4) then
                                     InstOut <= NormalExecutionInstOut;
@@ -185,6 +204,7 @@ begin
                                     half <= InstIn;
                                     multi <= '1';
                                     delay <= "00";
+                                    JzWait    <= '0';
                                 elsif (InstIn(15 downto 11) = "11111") then -- SWAP
                                     delayedInst <= InstIn;
                                     -- 15,11 op | 10,8 Rdst | 7,5 Rsrc1 | 4,2 Rsrc1
@@ -195,6 +215,7 @@ begin
                                     intSigOut <= "0000"; -- SWAP 0
                                     delay <= "11";
                                     delayType <= "00";
+                                    JzWait    <= '0';
                                 elsif (InstIn(15 downto 11) = "11110") then -- RTI
                                     delayedInst <= InstIn;
                                     InstOut <= "11110" & InstIn(10 downto 8) & InstIn(10 downto 3) & filler; -- POP-FR (RET) other bits are useless
@@ -202,6 +223,7 @@ begin
                                     intSigOut <= "0000"; -- RTI 0
                                     delay <= "01";
                                     delayType <= "01";
+                                    JzWait    <= '0';
                                 elsif (InstIn(15 downto 11) = "11100") then -- HLT
                                     delayedInst <= InstIn;
                                     InstOut <= nop; -- just nop
@@ -209,6 +231,8 @@ begin
                                     intSigOut <= "0000"; -- HLT 0
                                     delay <= "11";
                                     delayType <= "10";
+                                    JzWait    <= '0';
+
                                 elsif (InstIn(15 downto 11) = "11101") then -- RET
                                     delayedInst <= InstIn;
                                     InstOut <= NormalExecutionInstOut; -- just nop
@@ -216,11 +240,28 @@ begin
                                     intSigOut <= "0000"; -- HLT 0
                                     delay     <= "11";
                                     delayType <= "11";
+                                    JzWait    <= '0';
                                 else -- normal 1-cycle instruction
+                                    if (InstIn(15 downto 11) = "11000") then -- JZ
+                                        delay <= "00";
+                                        delayType <= "00";
+                                        JzWait <= '1';
+                                    elsif (InstIn(15 downto 11) = "11000") then -- JMP
+                                        delay <= "01";
+                                        delayType <= "11";
+                                        JzWait <= '0';
+                                    elsif (InstIn(15 downto 11) = "11000") then -- CALL
+                                        delay <= "01";
+                                        delayType <= "11";
+                                        JzWait <= '0';
+                                    else
+                                        delay <= "00";
+                                        delayType <= "00";
+                                        JzWait <= '0';
+                                    end if;
                                     InstOut <= NormalExecutionInstOut;
                                     prev    <= NormalExecutionInstOut;
                                     intSigOut <= "0000";
-                                    delay <= "00";
                                 end if;
                             end if;
                         end if;

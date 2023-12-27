@@ -28,7 +28,7 @@ Architecture Memoryarch of Memory is
 begin
 
 	process(MemEnable,Reset)
-	FILE data_file        : TEXT OPEN READ_MODE IS "data.txt";
+	FILE data_file        : TEXT OPEN READ_MODE IS "assembly/outputs/data.eds";
 	variable line_content : line := null;
 	variable data_line    : std_logic_vector(15 downto 0);
 	variable SimAddress   : integer := 0;
@@ -65,7 +65,7 @@ begin
 						ram(to_integer(unsigned(Address(11 downto 0)) + 1))   <= datain(15 downto 0);
 					end if;
 				elsif(Protect = '1') then
-					Protect_Bit(to_integer(unsigned(Address(11 downto 0))))<= '1';
+					Protect_Bit(to_integer(unsigned(Address(11 downto 0)))) <= '1';
 				elsif(Free = '1') then
 					Protect_Bit(to_integer(unsigned(Address(11 downto 0)))) <= '0';
 					ram(to_integer(unsigned(Address(11 downto 0))    ))   <= ZERO(31 downto 16);

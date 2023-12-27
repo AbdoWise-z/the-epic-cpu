@@ -124,8 +124,8 @@ begin
       Op2Source => Op2Source
     );
 
-    tR1_for <= ControlSignals(24) and R1_for;
-    tR2_for <= ControlSignals(23) and R2_for;
+    tR1_for <= ControlSignals(24);
+    tR2_for <= ControlSignals(23);
 
     Reg1 <= fRdst when RS = '0'
        else fRsrc1;

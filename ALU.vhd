@@ -41,7 +41,8 @@ Architecture ALUarch of ALU is
     signal sADD : std_logic_vector(32 downto 0);
     signal sADDf : std_logic_vector(3 downto 0);
     
-    signal sSUB : std_logic_vector(32 downto 0);
+    signal sSUUB : std_logic_vector(31 downto 0);
+    signal sSUB  : std_logic_vector(32 downto 0);
     signal sSUBf : std_logic_vector(3 downto 0);
 
     signal sAND : std_logic_vector(31 downto 0);
@@ -73,40 +74,41 @@ begin
 
     -- neg
     sNEG <= std_logic_vector(-signed(A));
-    sNEGf <= toBit(sNEG = ZERO) & sNOT(sNEG'high) & FRin(1 downto 0);
+    sNEGf <= toBit(sNEG = ZERO) & sNOT(31) & FRin(1 downto 0);
 
     -- not
     sNOT <= not A;
-    sNOTf <= toBit(sNOT = ZERO) & sNOT(sNOT'high) & FRin(1 downto 0);
+    sNOTf <= toBit(sNOT = ZERO) & sNOT(31) & FRin(1 downto 0);
 
     -- inc
     sINC <= std_logic_vector(signed('0' & A) + signed('0' & ONE));
-    sINCf <= toBit(sINC(31 downto 0) = ZERO) & sINC(sINC'high) & sINC(32) & FRin(0);
+    sINCf <= toBit(sINC(31 downto 0) = ZERO) & sINC(31) & sINC(32) & FRin(0);
 
     -- dec
-    sDEC <= std_logic_vector(signed('0' & A) + signed('1' & NEG_ONE));
-    sDECf <= toBit(sDEC(31 downto 0) = ZERO) & sDEC(sDEC'high) & sDEC(32) & FRin(0);
+    sDEC <= std_logic_vector(signed('0' & A) + signed('0' & NEG_ONE));
+    sDECf <= toBit(sDEC(31 downto 0) = ZERO) & sDEC(31) & sDEC(32) & FRin(0);
 
     -- add
     sADD <= std_logic_vector(signed('0' & A) + signed('0' & B));
-    sADDf <= toBit(sADD(31 downto 0) = ZERO) & sADD(sADD'high) & sADD(32) & FRin(0);
+    sADDf <= toBit(sADD(31 downto 0) = ZERO) & sADD(31) & sADD(32) & FRin(0);
 
 
     -- sub & CMP
-    sSUB <= std_logic_vector(signed('0' & A) - signed('0' & B));
-    sSUBf <= toBit(sSUB(31 downto 0) = ZERO) & sSUB(sSUB'high) & sSUB(32) & FRin(0);
+    sSUUB <= std_logic_vector(-signed(B)); -- neg B
+    sSUB <= std_logic_vector( signed('0' & A) + signed('0' & sSUUB) );
+    sSUBf <= toBit(sSUB(31 downto 0) = ZERO) & sSUB(31) & sSUB(32) & FRin(0);
 
     -- and
     sAND <= A and B;
-    sANDf <= toBit(sAND = ZERO) & sAND(sAND'high) & FRin(1 downto 0);
+    sANDf <= toBit(sAND = ZERO) & sAND(31) & FRin(1 downto 0);
 
     -- or
     sOR  <= A or B;
-    sORf <= toBit(sOR = ZERO) & sOR(sOR'high) & FRin(1 downto 0);
+    sORf <= toBit(sOR = ZERO) & sOR(31) & FRin(1 downto 0);
 
     -- xor
     sXOR <= A xor B;
-    sXORf <= toBit(sXOR = ZERO) & sXOR(sXOR'high) & FRin(1 downto 0);
+    sXORf <= toBit(sXOR = ZERO) & sXOR(31) & FRin(1 downto 0);
 
     -- RCL / RCR / bitset
     process( A , B , FRin )
@@ -136,7 +138,7 @@ begin
         sBITSET <= sBITSETv;
     end process;
 
-    sBITSETf <= toBit(sBITSET = ZERO) & sBITSET(sBITSET'high)  & FRin(1 downto 0);
+    sBITSETf <= toBit(sBITSET = ZERO) & sBITSET(31)  & FRin(1 downto 0);
     sRCLf <= toBit(sRCL(31 downto 0) = ZERO) & sRCL(31) & sRCL(32) & FRin(0);
     sRCRf <= toBit(sRCR(31 downto 0) = ZERO) & sRCR(31) & sRCR(32) & FRin(0);
 
@@ -169,6 +171,7 @@ begin
         else sBITSETf when S = "1011"
         else sRCLf when S = "1100"
         else sRCRf when S = "1101"
+        else ("0" & FRin(2 downto 0)) when S = "1110"
         else sNOPf; 
         
 end Architecture ALUarch;
