@@ -42,8 +42,8 @@ architecture StageFetchArch of StageFetch is
 
 
     signal InternalPC  : std_logic_vector(31 downto 0) := (others => '0');
-    signal PCSelector  : std_logic_vector(1 downto 0) := "00";
-    signal PCCFlush    : std_logic := '0';
+    signal PCSelector  : std_logic_vector(1 downto 0)  := "00";
+    signal PCCFlush    : std_logic                     := '0';
     signal InstIn      : std_logic_vector(15 downto 0) := (others => '0');
     signal Addr        : std_logic_vector(31 downto 0) := (others => '0');
     signal PC_P1       : std_logic_vector(31 downto 0) := (others => '0');

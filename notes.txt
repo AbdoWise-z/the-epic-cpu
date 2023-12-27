@@ -1,0 +1,30 @@
+of note:
+load-use-case 
+
+load-use-case in jmps
+
+you can't use ALU operation in the cycle after poping the FR
+
+stage register flushing is async
+
+
+
+
+randomshit:
+
+add a , 1
+jmp a
+nop
+nop
+
+
+load a , [0]
+jmp a
+nop
+nop
+
+F D E M W
+  F D E M W
+    F D E M W
+	  F
+		F D E M W

@@ -8,8 +8,8 @@
 # Put the interrupt address in the memory
 
 .code 
-LDM R1, 0x100
-STD R1, 0x2
+# LDM R1, 0x100  # our compiler automatically calculates the interrupt address :)
+# STD R1, 0x2
 
 in R1     #R1=30
 in R2     #R2=50

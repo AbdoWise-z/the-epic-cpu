@@ -28,7 +28,7 @@ Architecture Memoryarch of Memory is
 begin
 
 	process(MemEnable,Reset)
-	FILE data_file        : TEXT OPEN READ_MODE IS "assembly/outputs/data.eds";
+	FILE data_file        : TEXT OPEN READ_MODE IS "outputs/data.eds";
 	variable line_content : line := null;
 	variable data_line    : std_logic_vector(15 downto 0);
 	variable SimAddress   : integer := 0;

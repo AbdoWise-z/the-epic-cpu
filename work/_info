@@ -7,1129 +7,754 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-dC:/intelFPGA/18.1
-Ea
-Z0 w1701435151
-Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z3 dC:/Users/abdo_/Desktop/the-epic-cpu
-Z4 8C:\Users\abdo_\Desktop\the-epic-cpu\WriteBack.vhd
-Z5 FC:\Users\abdo_\Desktop\the-epic-cpu\WriteBack.vhd
-l0
-L5
-V=3HIaIIlC3b5;`5cFz9LS0
-!s100 g@Co[JZlBba8_3zz;mD?m1
-Z6 OV;C;10.5b;63
-32
-Z7 !s110 1701435152
-!i10b 1
-Z8 !s108 1701435152.000000
-Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\abdo_\Desktop\the-epic-cpu\WriteBack.vhd|
-Z10 !s107 C:\Users\abdo_\Desktop\the-epic-cpu\WriteBack.vhd|
-!i113 1
-Z11 o-work work -2002 -explicit
-Z12 tExplicit 1 CvgOpt 0
-Aarcha
-R1
-R2
-DEx4 work 1 a 0 22 =3HIaIIlC3b5;`5cFz9LS0
-l25
-L15
-VS:E^AUo1II5SeWdj]=_Y21
-!s100 ``lcm:ddI<:DDaD:We^fH3
-R6
-32
-R7
-!i10b 1
-R8
-R9
-R10
-!i113 1
-R11
-R12
+Z0 dC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu
 Ealu
-Z13 w1703642913
-Z14 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
-R1
-R2
-Z15 dC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu
-Z16 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd
-Z17 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd
+Z1 w1703642913
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ALU.vhd
+Z6 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ALU.vhd
 l0
 L5
 V`@YW?]jAShA_ZDb1knXA?3
 !s100 INR[ZVGmTfdEfUgG@oiEe3
-R6
+Z7 OV;C;10.5b;63
 32
-Z18 !s110 1703643504
+Z8 !s110 1703651273
 !i10b 1
-Z19 !s108 1703643504.000000
-Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd|
-Z21 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ALU.vhd|
+Z9 !s108 1703651273.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ALU.vhd|
+Z11 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ALU.vhd|
 !i113 1
-R11
-R12
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
 Aaluarch
-R14
-R1
 R2
+R3
+R4
 DEx4 work 3 alu 0 22 `@YW?]jAShA_ZDb1knXA?3
 l70
 L16
 VibTk9b]CgR^2fiG^f82^`0
 !s100 kd>UbS2Qj[WNZj3O@:LzC2
-R6
+R7
 32
-R18
+R8
 !i10b 1
-R19
-R20
-R21
-!i113 1
+R9
+R10
 R11
+!i113 1
 R12
-Econtrol_unit
-Z22 w1701435775
-R1
+R13
+Econtrolunit
+Z14 w1703650544
 R2
 R3
-Z23 8C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd
-Z24 FC:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd
-l0
-L4
-VIjT]b4FKTjJb<eDPS5eZ?0
-!s100 ]5Og8odgh^oJ_cYEoCFR10
-R6
-32
-Z25 !s110 1701607382
-!i10b 1
-Z26 !s108 1701607382.000000
-Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd|
-Z28 !s107 C:/Users/abdo_/Desktop/the-epic-cpu/Control_Unit.vhd|
-!i113 1
-R11
-R12
-Acontrol_unitarch
-R1
-R2
-DEx4 work 12 control_unit 0 22 IjT]b4FKTjJb<eDPS5eZ?0
-l10
-L9
-VQZ11?OkT>bj02>[XKo`J^2
-!s100 I@SDTU:E4n5W6;]O6[oa=3
-R6
-32
-R25
-!i10b 1
-R26
-R27
-R28
-!i113 1
-R11
-R12
-Econtrolunit
-Z29 w1703636537
-R14
-R1
-R2
-R15
-Z30 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ControlUnit.vhd
-Z31 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ControlUnit.vhd
+R4
+R0
+Z15 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ControlUnit.vhd
+Z16 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ControlUnit.vhd
 l0
 L5
 VmIA;o@D6M35mQ938kOR6?2
 !s100 Bjc>g_`Blo=mE:b0I3g1B2
-R6
+R7
 32
-R18
+R8
 !i10b 1
-R19
-Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ControlUnit.vhd|
-Z33 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ControlUnit.vhd|
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ControlUnit.vhd|
+Z18 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ControlUnit.vhd|
 !i113 1
-R11
 R12
+R13
 Acontrolunitarch
-R14
-R1
 R2
-Z34 DEx4 work 11 controlunit 0 22 mIA;o@D6M35mQ938kOR6?2
+R3
+R4
+Z19 DEx4 work 11 controlunit 0 22 mIA;o@D6M35mQ938kOR6?2
 l63
 L14
-VbUK[Y2RkD7hW635W4Yl:<0
-!s100 Tzj:az2f6;o[PZJ8T_Dc]0
-R6
+VC?@jWUkU<mEZkA6mn4ZT92
+!s100 YWa?3J9Q:l=:TX2;QoQ5S3
+R7
 32
-R18
+R8
 !i10b 1
-R19
-R32
-R33
+R9
+R17
+R18
 !i113 1
-R11
 R12
+R13
 Ecpu
-Z35 w1703120858
-R14
-R1
+Z20 w1703120858
 R2
-R15
-Z36 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd
-Z37 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd
+R3
+R4
+R0
+Z21 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/CPU.vhd
+Z22 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/CPU.vhd
 l0
 L5
 VHF4kPZWGIg=H:BRGD;`0;0
 !s100 @4d4Mnl@3X;58DREh<GHU2
-R6
+R7
 32
-Z38 !s110 1703643505
+Z23 !s110 1703651274
 !i10b 1
-Z39 !s108 1703643505.000000
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd|
-Z41 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/CPU.vhd|
+R9
+Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/CPU.vhd|
+Z25 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/CPU.vhd|
 !i113 1
-R11
 R12
+R13
 Acpu_arch
-Z42 DEx4 work 11 stagememory 0 22 5_mzEQ4TNlX;ROgnDjEiD2
-Z43 DEx4 work 12 stageexecute 0 22 YF5`<kLE3L3Y=?Ke85De?3
-Z44 DEx4 work 11 stagedecode 0 22 A>IPlg74oM[d_bA7zRg693
-Z45 DEx4 work 10 stagefetch 0 22 GlCKd0VgV@::5<cB[QA;Z0
-R14
-R1
+Z26 DEx4 work 11 stagememory 0 22 5_mzEQ4TNlX;ROgnDjEiD2
+Z27 DEx4 work 12 stageexecute 0 22 YF5`<kLE3L3Y=?Ke85De?3
+Z28 DEx4 work 11 stagedecode 0 22 A>IPlg74oM[d_bA7zRg693
+Z29 DEx4 work 10 stagefetch 0 22 GlCKd0VgV@::5<cB[QA;Z0
 R2
+R3
+R4
 DEx4 work 3 cpu 0 22 HF4kPZWGIg=H:BRGD;`0;0
 l68
 L20
 VJZZoVFW38CIF1WSQdfOGS1
 !s100 _3;;0_P49QIRAeefQdnGB3
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R40
-R41
-!i113 1
-R11
-R12
-Edecode
-Z46 w1701435765
-R1
-R2
-R3
-Z47 8C:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd
-Z48 FC:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd
-l0
-L4
-VE3Q<1k2<SY1^06ORNDiWc0
-!s100 YZ6MkOdTOD3UYD5A<NUfT2
-R6
-32
-Z49 !s110 1701607383
-!i10b 1
-Z50 !s108 1701607383.000000
-Z51 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd|
-Z52 !s107 C:/Users/abdo_/Desktop/the-epic-cpu/Decode.vhd|
-!i113 1
-R11
-R12
-Adecodearch
-R1
-R2
-DEx4 work 6 decode 0 22 E3Q<1k2<SY1^06ORNDiWc0
-l13
-L12
-V746lOdkom?G9`@:ijR5Ci2
-!s100 3T5cUT31bGi;7PMagQC_g1
-R6
-32
-R49
-!i10b 1
-R50
-R51
-R52
-!i113 1
-R11
-R12
-Efetch
-Z53 w1701435792
-R1
-R2
-R3
-Z54 8C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd
-Z55 FC:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd
-l0
-L4
-V=WHTYfjHKnl[0:<B2dKAD0
-!s100 IfB2Gk;DPjOPmRga<[eH12
-R6
-32
+R9
+R24
 R25
-!i10b 1
-R26
-Z56 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd|
-Z57 !s107 C:/Users/abdo_/Desktop/the-epic-cpu/Fetch.vhd|
 !i113 1
-R11
 R12
-Afetcharch
-R1
-R2
-DEx4 work 5 fetch 0 22 =WHTYfjHKnl[0:<B2dKAD0
-l10
-L9
-VhYQn[EBHOz5o]5d[JT?6T0
-!s100 HDo2ioZA32g^0U1o5Me753
-R6
-32
-R25
-!i10b 1
-R26
-R56
-R57
-!i113 1
-R11
-R12
-Efetch_tb
-Z58 w1701721836
-R1
-R2
-R3
-Z59 8C:\Users\abdo_\Desktop\the-epic-cpu\Fetch_Tb.vhd
-Z60 FC:\Users\abdo_\Desktop\the-epic-cpu\Fetch_Tb.vhd
-l0
-L5
-Vh]UOAj=OPhZ8DD6WWm>bI1
-!s100 8J;B]3nNkDe@<W26z8CUD2
-R6
-32
-Z61 !s110 1701721923
-!i10b 1
-Z62 !s108 1701721923.000000
-Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\abdo_\Desktop\the-epic-cpu\Fetch_Tb.vhd|
-Z64 !s107 C:\Users\abdo_\Desktop\the-epic-cpu\Fetch_Tb.vhd|
-!i113 1
-R11
-R12
-Afetch_tbarch
-R1
-R2
-DEx4 work 8 fetch_tb 0 22 h]UOAj=OPhZ8DD6WWm>bI1
-l29
-L8
-VIRojHVM`hkXAGjXn5R?NS3
-!s100 d`4TRSH:=F4TY4YZA^8Y_0
-R6
-32
-R61
-!i10b 1
-R62
-R63
-R64
-!i113 1
-R11
-R12
-Efile_register
-Z65 w1701538050
-R14
-R1
-R2
-R3
-Z66 8C:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd
-Z67 FC:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd
-l0
-L5
-VCiJn76VVafhPKhAO0SkOz2
-!s100 ^2URR1R7bVcL?Lj9i_^nd3
-R6
-32
-R49
-!i10b 1
-R50
-Z68 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd|
-Z69 !s107 C:/Users/abdo_/Desktop/the-epic-cpu/FileRegister.vhd|
-!i113 1
-R11
-R12
-Afile_registerarch
-R14
-R1
-R2
-DEx4 work 13 file_register 0 22 CiJn76VVafhPKhAO0SkOz2
-l11
-L10
-VoOB>?d31;50jM5CSAG=cb3
-!s100 zmJT^<78[F0?4LmFOlCFk0
-R6
-32
-R49
-!i10b 1
-R50
-R68
-R69
-!i113 1
-R11
-R12
+R13
 Eforwardcalculationunit
-Z70 w1701684149
-R14
-R1
+Z30 w1701684149
 R2
-R15
-Z71 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardCalculationUnit.vhd
-Z72 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardCalculationUnit.vhd
+R3
+R4
+R0
+Z31 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardCalculationUnit.vhd
+Z32 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardCalculationUnit.vhd
 l0
 L5
 Vdc3i7YEca365d<Wn<P:dn3
 !s100 7S_zbEIb6;T5UQG;OZi3@3
-R6
+R7
 32
-R18
+R23
 !i10b 1
-R19
-Z73 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardCalculationUnit.vhd|
-Z74 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardCalculationUnit.vhd|
+Z33 !s108 1703651274.000000
+Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardCalculationUnit.vhd|
+Z35 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardCalculationUnit.vhd|
 !i113 1
-R11
 R12
+R13
 Aforwardcalculationunitarch
-R14
-R1
 R2
-Z75 DEx4 work 22 forwardcalculationunit 0 22 dc3i7YEca365d<Wn<P:dn3
+R3
+R4
+Z36 DEx4 work 22 forwardcalculationunit 0 22 dc3i7YEca365d<Wn<P:dn3
 l13
 L12
 V0Q2OG[_6V[VNLMj[DzBeW0
 !s100 6h6gbX9h]k4<MFM0_g>KX3
-R6
+R7
 32
-R18
+R23
 !i10b 1
-R19
-R73
-R74
+R33
+R34
+R35
 !i113 1
-R11
 R12
-Eforwarding_unit
-Z76 w1701435796
-R1
+R13
+Eforwardingunit
+Z37 w1702862127
 R2
 R3
-Z77 8C:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd
-Z78 FC:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd
-l0
-L4
-Vfe?b?od^b?k<^l@eHQdWS2
-!s100 hRR:a;21<ejBhO?3EO9_Q1
-R6
-32
-R25
-!i10b 1
-R26
-Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd|
-Z80 !s107 C:/Users/abdo_/Desktop/the-epic-cpu/Forwarding_Unit.vhd|
-!i113 1
-R11
-R12
-Aforwarding_unitarch
-R1
-R2
-DEx4 work 15 forwarding_unit 0 22 fe?b?od^b?k<^l@eHQdWS2
-l10
-L9
-VPn2z9AfIzA5cQQ1^;o]>I3
-!s100 `I9n4hbfn?nU2Yn5diBog1
-R6
-32
-R25
-!i10b 1
-R26
-R79
-R80
-!i113 1
-R11
-R12
-Eforwardingunit
-Z81 w1702862127
-R14
-R1
-R2
-R15
-Z82 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardingUnit.vhd
-Z83 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardingUnit.vhd
+R4
+R0
+Z38 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardingUnit.vhd
+Z39 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardingUnit.vhd
 l0
 L5
 VJZgAK5Nhnfk4ePNAFhLh21
 !s100 i5g>[FfjVJ=T=h47h:ilb1
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z84 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardingUnit.vhd|
-Z85 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/ForwardingUnit.vhd|
+R33
+Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardingUnit.vhd|
+Z41 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/ForwardingUnit.vhd|
 !i113 1
-R11
 R12
+R13
 Aforwardingunit_arch
-R14
-R1
 R2
-Z86 DEx4 work 14 forwardingunit 0 22 JZgAK5Nhnfk4ePNAFhLh21
+R3
+R4
+Z42 DEx4 work 14 forwardingunit 0 22 JZgAK5Nhnfk4ePNAFhLh21
 l14
 L13
 VciNkJH4KfDUzh7L8ScM4D0
 !s100 a[azcU@GQ6KT@?e6B1kl20
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R84
-R85
+R33
+R40
+R41
 !i113 1
-R11
 R12
+R13
 Ehazarddetectionunit
-Z87 w1703100211
-R14
-R1
+Z43 w1703100211
 R2
-R15
-Z88 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/HazardDetectionUnit.vhd
-Z89 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/HazardDetectionUnit.vhd
+R3
+R4
+R0
+Z44 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/HazardDetectionUnit.vhd
+Z45 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/HazardDetectionUnit.vhd
 l0
 L5
 V4Oh?P88dJYY>bX6X4E=HJ2
 !s100 C1Q=Qgi:7hd]6ToJOAbN10
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/HazardDetectionUnit.vhd|
-Z91 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/HazardDetectionUnit.vhd|
+R33
+Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/HazardDetectionUnit.vhd|
+Z47 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/HazardDetectionUnit.vhd|
 !i113 1
-R11
 R12
+R13
 Ahazarddetectionunit_arch
-R14
-R1
 R2
-Z92 DEx4 work 19 hazarddetectionunit 0 22 4Oh?P88dJYY>bX6X4E=HJ2
+R3
+R4
+Z48 DEx4 work 19 hazarddetectionunit 0 22 4Oh?P88dJYY>bX6X4E=HJ2
 l14
 L13
-Z93 VZ]n=U[XN`5o1DGW0`<>Nm0
-Z94 !s100 9bT;`fURfS@kI[mImkzh01
-R6
+VZ]n=U[XN`5o1DGW0`<>Nm0
+!s100 9bT;`fURfS@kI[mImkzh01
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R90
-R91
+R33
+R46
+R47
 !i113 1
-R11
 R12
-Einstruction_mem
-Z95 w1701512232
-R14
-R1
-R2
-R3
-Z96 8C:/Users/abdo_/Desktop/the-epic-cpu/InstructionMem.vhd
-Z97 FC:/Users/abdo_/Desktop/the-epic-cpu/InstructionMem.vhd
-l0
-L5
-VVaWE;E`[QM^o1^z44>X0o0
-!s100 7<==PbQI`Gd[dzPnX>5HC0
-R6
-32
-Z98 !s110 1701603741
-!i10b 1
-Z99 !s108 1701603741.000000
-Z100 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/abdo_/Desktop/the-epic-cpu/InstructionMem.vhd|
-Z101 !s107 C:/Users/abdo_/Desktop/the-epic-cpu/InstructionMem.vhd|
-!i113 1
-R11
-R12
-Ainstruction_memarch
-R14
-R1
-R2
-DEx4 work 15 instruction_mem 0 22 VaWE;E`[QM^o1^z44>X0o0
-l11
-L10
-V4d>`fH:FMl=iflO0hm[NL2
-!s100 C?XD@keglSQBmo:Ma@^811
-R6
-32
-R98
-!i10b 1
-R99
-R100
-R101
-!i113 1
-R11
-R12
-Einstruction_memory
-Z102 w1701512204
-R14
-R1
-R2
-R3
-Z103 8C:\Users\abdo_\Desktop\the-epic-cpu\InstructionMem.vhd
-Z104 FC:\Users\abdo_\Desktop\the-epic-cpu\InstructionMem.vhd
-l0
-L5
-VIBTmIHb0oj19O8blV?16g1
-!s100 G`m[6No3a[[E5km]5VV@D0
-R6
-32
-Z105 !s110 1701512207
-!i10b 1
-Z106 !s108 1701512207.000000
-Z107 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\abdo_\Desktop\the-epic-cpu\InstructionMem.vhd|
-Z108 !s107 C:\Users\abdo_\Desktop\the-epic-cpu\InstructionMem.vhd|
-!i113 1
-R11
-R12
-Ainstruction_memoryarch
-R14
-R1
-R2
-DEx4 work 18 instruction_memory 0 22 IBTmIHb0oj19O8blV?16g1
-l21
-L16
-V5mUO`kcnX_5>]z;0Kj0G01
-!s100 @oF^;BkkFe9A0A@djXVj51
-R6
-32
-R105
-!i10b 1
-R106
-R107
-R108
-!i113 1
-R11
-R12
+R13
 Einstructionmem
-Z109 w1703638237
-Z110 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
-R14
-R1
+Z49 w1703648216
+Z50 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R2
-R15
-Z111 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd
-Z112 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd
+R3
+R4
+R0
+Z51 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/InstructionMem.vhd
+Z52 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/InstructionMem.vhd
 l0
 L7
 V;<f^9ReYkh2kQ8UhUi[E73
 !s100 H1e5jUPO=TnK^1gke0V]63
-R6
+R7
 32
-R18
+R23
 !i10b 1
-R19
-Z113 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd|
-Z114 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/InstructionMem.vhd|
+R33
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/InstructionMem.vhd|
+Z54 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/InstructionMem.vhd|
 !i113 1
-R11
 R12
+R13
 Ainstructionmemarch
-R110
-R14
-R1
+R50
 R2
+R3
+R4
 DEx4 work 14 instructionmem 0 22 ;<f^9ReYkh2kQ8UhUi[E73
 l23
 L17
-VE?7AX_UkFJF2R?5naQV[03
-!s100 ^Q@OSzbgCA<X`JoZfOh;C1
-R6
+V_WngH47?Pf<:42oJEBf=Z1
+!s100 zHoXDKcV:GD=4kUU?jjTN3
+R7
 32
-R18
+R23
 !i10b 1
-R19
-R113
-R114
+R33
+R53
+R54
 !i113 1
-R11
 R12
+R13
 Emem_tb
-Z115 w1701617282
-R1
-R2
-R15
-Z116 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory_tb.vhd
-Z117 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory_tb.vhd
+Z55 w1701617282
+R3
+R4
+R0
+Z56 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory_tb.vhd
+Z57 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory_tb.vhd
 l0
 L5
 Vn=3J5J^_V?e>V7_V]P8SB0
 !s100 8KO[Y[U1>Z1]BWm>R>i9z1
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z118 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory_tb.vhd|
-Z119 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory_tb.vhd|
+R33
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory_tb.vhd|
+Z59 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory_tb.vhd|
 !i113 1
-R11
 R12
+R13
 Amem_tbarch
-R1
-R2
+R3
+R4
 DEx4 work 6 mem_tb 0 22 n=3J5J^_V?e>V7_V]P8SB0
 l21
 L8
 V:863FLzmOdC[?a:J5][Y10
 !s100 S:ZefUnWc7RHdgWa<goIJ0
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R118
-R119
+R33
+R58
+R59
 !i113 1
-R11
 R12
+R13
 Ememory
-Z120 w1703638965
-R110
-R14
-R1
+Z60 w1703648235
+R50
 R2
-R15
-Z121 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory.vhd
-Z122 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory.vhd
+R3
+R4
+R0
+Z61 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory.vhd
+Z62 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory.vhd
 l0
 L7
 VL]3PH?[?ke?aXg?`;JXP22
 !s100 lQc^8D9VZZ0AQhoW4X`:e0
-R6
+R7
 32
-R18
+R23
 !i10b 1
-R19
-Z123 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory.vhd|
-Z124 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/Memory.vhd|
+R33
+Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory.vhd|
+Z64 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/Memory.vhd|
 !i113 1
-R11
 R12
+R13
 Amemoryarch
-R110
-R14
-R1
+R50
 R2
+R3
+R4
 DEx4 work 6 memory 0 22 L]3PH?[?ke?aXg?`;JXP22
 l28
 L17
-V<f0@8b997=<8FMWXoP1VQ2
-!s100 =zTgSMb]g?Y5mB=24dADe1
-R6
+VikMccHTOnc@A5O@_MazLW3
+!s100 eQkYHf3XMKz12lF`X3OVm2
+R7
 32
-R18
+R23
 !i10b 1
-R19
-R123
-R124
+R33
+R63
+R64
 !i113 1
-R11
 R12
+R13
 Epccontrolunit
-Z125 w1703098328
-R14
-R1
+Z65 w1703098328
 R2
-R15
-Z126 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PCControlUnit.vhd
-Z127 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PCControlUnit.vhd
+R3
+R4
+R0
+Z66 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PCControlUnit.vhd
+Z67 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PCControlUnit.vhd
 l0
 L5
 VoOR<1I]AM;=kMf[<a^dz=2
 !s100 jR2kGPdUH;FJn3nh=>=K<1
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z128 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PCControlUnit.vhd|
-Z129 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PCControlUnit.vhd|
+R33
+Z68 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PCControlUnit.vhd|
+Z69 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PCControlUnit.vhd|
 !i113 1
-R11
 R12
+R13
 Apccu_arch
-R14
-R1
 R2
+R3
+R4
 DEx4 work 13 pccontrolunit 0 22 oOR<1I]AM;=kMf[<a^dz=2
 l20
 L18
 V1LIU21ZhTG>Sk:M_RafbG2
 !s100 4BIQdX:f97eXZYi[Kk8?U1
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R128
-R129
+R33
+R68
+R69
 !i113 1
-R11
 R12
+R13
 Epredecoder
-Z130 w1703643476
-R14
-R1
+Z70 w1703651243
 R2
-R15
-Z131 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd
-Z132 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd
+R3
+R4
+R0
+Z71 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PreDecoder.vhd
+Z72 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PreDecoder.vhd
 l0
 L5
 V_onELFLjaCl=0Co9_ac_b0
 !s100 1l=B`5mW52lCbQITDj^483
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z133 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd|
-Z134 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/PreDecoder.vhd|
+R33
+Z73 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PreDecoder.vhd|
+Z74 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/PreDecoder.vhd|
 !i113 1
-R11
 R12
+R13
 Apredecoderarch
-R14
-R1
 R2
-Z135 DEx4 work 10 predecoder 0 22 _onELFLjaCl=0Co9_ac_b0
+R3
+R4
+Z75 DEx4 work 10 predecoder 0 22 _onELFLjaCl=0Co9_ac_b0
 l48
 L19
-VaQz_C]k]04Q[GZQJ9K>E>1
-!s100 Zc<UWYomYPRgK1U=@WcnW3
-R6
+Vl4>4Z[?<Y@@2h2;Gkk[QI3
+!s100 QbYM2>hJTk2hMN8B@7B]o0
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R133
-R134
+R33
+R73
+R74
 !i113 1
-R11
 R12
+R13
 Eregisterfile
-Z136 w1703119717
-R14
-R1
+Z76 w1703119717
 R2
-R15
-Z137 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd
-Z138 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd
+R3
+R4
+R0
+Z77 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/RegisterFile.vhd
+Z78 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/RegisterFile.vhd
 l0
 L7
 VgmZna62Dj07PdC8LBWEFG2
 !s100 ]8W^H[zDLHdKD[2k8E1Zc2
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z139 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd|
-Z140 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/RegisterFile.vhd|
+R33
+Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/RegisterFile.vhd|
+Z80 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/RegisterFile.vhd|
 !i113 1
-R11
 R12
+R13
 Aregisterfilearch
-R14
-R1
 R2
-Z141 DEx4 work 12 registerfile 0 22 gmZna62Dj07PdC8LBWEFG2
+R3
+R4
+Z81 DEx4 work 12 registerfile 0 22 gmZna62Dj07PdC8LBWEFG2
 l22
 L18
 V8cFT[AN1GCnifo_SW4bF:0
 !s100 CaX[^W7fNN;nBi0WKJ?Ag2
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R139
-R140
+R33
+R79
+R80
 !i113 1
-R11
 R12
+R13
 Estagedecode
-Z142 w1703637070
-R14
-R1
+Z82 w1703637070
 R2
-R15
-Z143 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd
-Z144 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd
+R3
+R4
+R0
+Z83 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode.vhd
+Z84 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode.vhd
 l0
 L5
 VA>IPlg74oM[d_bA7zRg693
 !s100 NWgBa1OH<=3z^gcZR<_?W2
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z145 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd|
-Z146 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageDecode.vhd|
+R33
+Z85 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode.vhd|
+Z86 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode.vhd|
 !i113 1
-R11
 R12
+R13
 Astagedecodearch
-R92
-R141
-R75
-R34
-R14
-R1
+R48
+R81
+R36
+R19
 R2
-R44
+R3
+R4
+R28
 l92
 L43
 V1k;RV5I4]Z2D_C>moX3fP2
 !s100 7nYX93iRgPFBK<OK2@I:91
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R145
-R146
+R33
+R85
+R86
 !i113 1
-R11
 R12
-Estageexecute
-Z147 w1703119792
-R14
-R1
+R13
+Estagedecode_tb
+Z87 w1701784404
 R2
-R15
-Z148 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd
-Z149 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd
+R3
+R4
+R0
+Z88 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode_tb.vhd
+Z89 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode_tb.vhd
+l0
+L5
+VnDK;fLz^4:fhkE`YoaNBk2
+!s100 VZ>o<@HKJ>VWVzXa0Gd7W0
+R7
+32
+R23
+!i10b 1
+R33
+Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode_tb.vhd|
+Z91 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageDecode_tb.vhd|
+!i113 1
+R12
+R13
+Astagedecode_tbarch
+R2
+R3
+R4
+DEx4 work 14 stagedecode_tb 0 22 nDK;fLz^4:fhkE`YoaNBk2
+l41
+L8
+VG3S25R:9eEN;o;ADA<i=j0
+!s100 m8]RfTfDX2M_@@Rgoc2b33
+R7
+32
+R23
+!i10b 1
+R33
+R90
+R91
+!i113 1
+R12
+R13
+Estageexecute
+Z92 w1703119792
+R2
+R3
+R4
+R0
+Z93 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute.vhd
+Z94 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute.vhd
 l0
 L5
 VYF5`<kLE3L3Y=?Ke85De?3
 !s100 `X3FbkSDkfCd3?gmC[B@J1
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z150 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd|
-Z151 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute.vhd|
+R33
+Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute.vhd|
+Z96 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute.vhd|
 !i113 1
-R11
 R12
+R13
 Astageexecutearch
-R86
-R14
-R1
+R42
 R2
-R43
+R3
+R4
+R27
 l57
 L25
 V0RlPbPG=FQ4Sia=VK:mT30
 !s100 `hS7dc`S_>DOK0JhcHzYZ1
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R150
-R151
+R33
+R95
+R96
 !i113 1
-R11
 R12
+R13
 Estageexecute_tb
-Z152 w1701760076
-R14
-R1
+Z97 w1701760076
 R2
-R15
-Z153 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute_tb.vhd
-Z154 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute_tb.vhd
+R3
+R4
+R0
+Z98 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute_tb.vhd
+Z99 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute_tb.vhd
 l0
 L5
 V97j;TW1kJf>L@a;bSUhD>0
 !s100 31FVYo;^`=5H@_XhzRZ:I0
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z155 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute_tb.vhd|
-Z156 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageExecute_tb.vhd|
+R33
+Z100 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute_tb.vhd|
+Z101 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageExecute_tb.vhd|
 !i113 1
-R11
 R12
+R13
 Astageexecute_tbarch
-R14
-R1
 R2
+R3
+R4
 DEx4 work 15 stageexecute_tb 0 22 97j;TW1kJf>L@a;bSUhD>0
 l41
 L8
 VESIF[a3?<8k=F>[Rm:L^C2
 !s100 >YR_;`3fRS]5Pn[:S2T=a0
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R155
-R156
+R33
+R100
+R101
 !i113 1
-R11
 R12
+R13
 Estagefetch
-Z157 w1703119439
-R14
-R1
+Z102 w1703648554
 R2
-R15
-Z158 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd
-Z159 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd
+R3
+R4
+R0
+Z103 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageFetch.vhd
+Z104 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageFetch.vhd
 l0
 L4
 VGlCKd0VgV@::5<cB[QA;Z0
 !s100 ?I0BOj7kk?<7zU0DD0LMc0
-R6
+R7
 32
-R38
+R23
 !i10b 1
-R39
-Z160 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd|
-Z161 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageFetch.vhd|
+R33
+Z105 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageFetch.vhd|
+Z106 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageFetch.vhd|
 !i113 1
-R11
 R12
+R13
 Astagefetcharch
-R135
-R14
-R1
+R75
 R2
-R45
+R3
+R4
+R29
 l52
 L20
-Vh9LiiC6FLABb`A:UC_Ia_0
-!s100 YFdNAT6lz2Z59zF]9W73S3
-R6
+Z107 VZ5@XG0D1[M:SdRIHdDcWH0
+Z108 !s100 oMI9HA@4N1F_<o_:XVFnE0
+R7
 32
-R38
+R23
 !i10b 1
-R39
-R160
-R161
+R33
+R105
+R106
 !i113 1
-R11
 R12
+R13
 Estagememory
-Z162 w1703120697
-R14
-R1
+Z109 w1703120697
 R2
-R15
-Z163 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd
-Z164 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd
+R3
+R4
+R0
+Z110 8C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageMemory.vhd
+Z111 FC:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageMemory.vhd
 l0
 L5
 V5_mzEQ4TNlX;ROgnDjEiD2
 !s100 5SezbFTJPj>>Sch@_lX6d1
-R6
+R7
 32
-R18
+R8
 !i10b 1
-R19
-Z165 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd|
-Z166 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch/the-epic-cpu/StageMemory.vhd|
+R9
+Z112 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageMemory.vhd|
+Z113 !s107 C:/Users/xAbdoMo/Desktop/Uni/Projects/Arch-Project/the-epic-cpu/StageMemory.vhd|
 !i113 1
-R11
 R12
+R13
 Astagememoryarch
-R14
-R1
 R2
-R42
+R3
+R4
+R26
 l63
 L34
 VQYCBaOB[Ul3BDJS8V]>zm0
 !s100 ?Ml;AFn>bU?T6embD2YRM0
-R6
+R7
 32
-R18
+R8
 !i10b 1
-R19
-R165
-R166
+R9
+R112
+R113
 !i113 1
-R11
 R12
-Astagememory_arch
-R14
-R1
-R2
-R42
-l63
-L34
-VbN32RLid[i:]lkZz:R`>93
-!s100 WVbk@FZoA1`l2O[HKElD^0
-R6
-32
-!s110 1701781757
-!i10b 1
-!s108 1701781757.000000
-R165
-R166
-!i113 1
-R11
-R12
-w1701777808
-Ewriteback
-Z167 w1701435664
-R1
-R2
-R3
-Z168 8C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd
-Z169 FC:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd
-l0
-L4
-V;fSL:IQY4VeCcYjIg>:Ol3
-!s100 ^7H6@18E@KBh7=IOY6ghb0
-R6
-32
-R49
-!i10b 1
-R50
-Z170 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd|
-Z171 !s107 C:/Users/abdo_/Desktop/the-epic-cpu/WriteBack.vhd|
-!i113 1
-R11
-R12
-Awritebackarch
-R1
-R2
-DEx4 work 9 writeback 0 22 ;fSL:IQY4VeCcYjIg>:Ol3
-l16
-L15
-VOYIBSi0jXPnFgjDzTV[VC2
-!s100 >CXS9kUM0YC?FKPhUC<010
-R6
-32
-R49
-!i10b 1
-R50
-R170
-R171
-!i113 1
-R11
-R12
+R13

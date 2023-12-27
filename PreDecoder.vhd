@@ -172,7 +172,7 @@ begin
                             -- we should start an interrupt sequance
                             -- sequance is as fullows
                             -- PUSH PC , PUSH FR , LDD PC
-                            IntSequance <= "11"; -- PUSH PC
+                            IntSequance <= "11";     -- PUSH PC
                             InstOut     <= INT_INST; -- INT 0
                             intSigOut   <= "1001"; 
                             shouldInt   <= '0';
@@ -246,11 +246,11 @@ begin
                                         delay <= "00";
                                         delayType <= "00";
                                         JzWait <= '1';
-                                    elsif (InstIn(15 downto 11) = "11000") then -- JMP
+                                    elsif (InstIn(15 downto 11) = "11001") then -- JMP
                                         delay <= "01";
                                         delayType <= "11";
                                         JzWait <= '0';
-                                    elsif (InstIn(15 downto 11) = "11000") then -- CALL
+                                    elsif (InstIn(15 downto 11) = "11010") then -- CALL
                                         delay <= "01";
                                         delayType <= "11";
                                         JzWait <= '0';

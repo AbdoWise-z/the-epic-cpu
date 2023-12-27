@@ -22,7 +22,7 @@ Type ram_type is Array(0 to 4095) of std_logic_vector(15 downto 0);
 
 begin
 	process (Reset)
-		FILE data_file        : TEXT OPEN READ_MODE IS "assembly/outputs/code.ecs";
+		FILE data_file        : TEXT OPEN READ_MODE IS "outputs/code.ecs";
 		variable line_content : line := null;
 		variable data_line    : std_logic_vector(15 downto 0);
 		variable SimAddress   : integer := 0;
