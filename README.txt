@@ -1,7 +1,3 @@
-
-![Image](/Screenshot%202024-04-08%20215921.png)
-
-
 sooo this is the EPIC-CPU assembler (requires JAVA 17)
 
 What it can do:
