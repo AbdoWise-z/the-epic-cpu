@@ -147,7 +147,7 @@ and each instruction activation is as follows (can also be found [here](https://
 
 <!-- GETTING STARTED -->
 ## Getting Started
-you will need to download ModelSim or any VHDL simlator program to simualte the CPU, its source code can be found in /cpu, you will also need to have JAVA 17 to use the compiler
+you will need to download ModelSim or any VHDL simulator program to simulate the CPU, its source code can be found in /cpu, you will also need to have JAVA 17 to use the compiler
 
 ## images
 
