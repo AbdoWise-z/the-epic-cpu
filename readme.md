@@ -239,7 +239,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [contributors-shield]: https://img.shields.io/github/contributors/AbdoWise-z/the-epic-cpu?style=for-the-badge
 [contributors-url]: https://github.com/AbdoWise-z/the-epic-cpu/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/oAbdoWise-z/the-epic-cpu?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/AbdoWise-z/the-epic-cpu?style=for-the-badge
 [forks-url]: https://github.com/AbdoWise-z/the-epic-cpu/network/members
 
 [stars-shield]: https://img.shields.io/github/stars/AbdoWise-z/the-epic-cpu?style=for-the-badge
